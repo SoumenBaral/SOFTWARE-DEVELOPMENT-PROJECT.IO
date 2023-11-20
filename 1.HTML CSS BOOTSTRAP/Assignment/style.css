@@ -1,0 +1,13 @@
+.image-container {
+    position: relative;
+    width: 200px; /* Set the width of your cropped area */
+    height: 200px; /* Set the height of your cropped area */
+    overflow: hidden;
+  }
+
+  .cropped-image {
+    clip: rect(0px, 200px, 200px, 0px); /* Define the portion to be shown (top, right, bottom, left) */
+    width: 100%; /* Make the image fill the container */
+    height: 100%; /* Make the image fill the container */
+    position: absolute;
+  }
