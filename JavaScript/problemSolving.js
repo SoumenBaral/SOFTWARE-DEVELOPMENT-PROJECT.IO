@@ -49,3 +49,14 @@ for(let i = 1; i<50; i++){
         console.log(i);
     }
 }
+
+friends =  ["shuvo","shakib","AlaminAlomHero","Anoara"]
+let x = [""] ;
+for (let i = 0; i < friends.length; i++) {
+    const element = friends[i];
+    console.log(element.length);
+    if(x[0].length<element.length){
+        x[0] = element;
+    }
+}
+console.log(x[0]);
