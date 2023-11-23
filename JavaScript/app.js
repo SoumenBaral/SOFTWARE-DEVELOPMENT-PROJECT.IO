@@ -17,3 +17,10 @@ const person = {
 console.log(Object.keys(person) );
 console.log(Object.values(person.shuvo_Activity) );
 console.log(Object.entries(person))
+
+person.friends.push("Akib")
+console.log(person.friends)
+person.friends.shift();
+console.log(person.friends)
+person.friends.unshift("NATIK")
+console.log(person.friends)
