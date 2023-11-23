@@ -16,3 +16,4 @@ const person = {
 }
 console.log(Object.keys(person) );
 console.log(Object.values(person.shuvo_Activity) );
+console.log(Object.entries(person))
