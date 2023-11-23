@@ -60,3 +60,20 @@ for (let i = 0; i < friends.length; i++) {
     }
 }
 console.log(x[0]);
+
+
+let numbers = [1,4,2,1,2,5,3,4,5];
+const uniqueNumber = numbers[0];
+
+for (let i = 0; i < numbers.length; i++) {
+    const element = numbers[i];
+    for (let j = 1; j < numbers.length-1; j++) {
+        const AllElement = numbers[j];
+        if (element !== AllElement) {
+           console.log(AllElement);
+        }
+
+        
+        
+    }
+}
