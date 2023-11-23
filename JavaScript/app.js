@@ -24,3 +24,7 @@ person.friends.shift();
 console.log(person.friends)
 person.friends.unshift("NATIK")
 console.log(person.friends)
+console.log(person.friends.slice(2,5));
+console.log(person.friends.indexOf("shakib"));
+console.log(person.friends.reverse())
+console.log(person.friends.indexOf("shakib"));
