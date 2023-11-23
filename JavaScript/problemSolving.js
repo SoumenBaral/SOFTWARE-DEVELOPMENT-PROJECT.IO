@@ -21,3 +21,25 @@ function OddOrEven(x) {
 }
 
 OddOrEven(30)
+
+
+// question 2: Is the year is leapYear ????
+
+
+function leapYear(num){
+    if(num%400 == 0){
+        console.log("This is leapYear");
+    }
+    else if(num%100==0){
+        console.log("This is not leapYear");
+    }
+    else if (num%4 == 0 ){
+        console.log("This is leapYear baby ");
+    }
+    else{
+        console.log("This is not leapYear");
+    }
+}
+
+
+leapYear(2023)
