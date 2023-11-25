@@ -5,10 +5,12 @@ function inputValue(){
    return paseVal
 
 }
-
+function getId(id){
+return document.getElementById(id)
+}
 function depositBtn(){
     let inputVal = inputValue()
-    const DepositTxt = document.getElementById("Deposit")
+    const DepositTxt = getId("Deposit")
     let Deposit = parseInt(DepositTxt.innerText)
     console.log(Deposit);
     if(inputVal>0){
@@ -19,7 +21,7 @@ function depositBtn(){
         alert("Give a Valid amount")
     }
 
-    const BalanceTxt = document.getElementById("Balance");
+    const BalanceTxt = getId("Balance");
     let Balance = parseInt(BalanceTxt.innerText)
     if(inputVal>0){
         Balance += inputVal
@@ -29,6 +31,24 @@ function depositBtn(){
 
 function withdrawBTN(){
     let inputVal = inputValue()
-    console.log(inputVal);
+    const withdrawTxt = getId("withdraw")
+    let withdraw = parseInt(withdrawTxt.innerText)
+
+    const BalanceTxt = getId("Balance");
+    let Balance = parseInt(BalanceTxt.innerText)
+
+    if(inputVal<Balance && inputVal>0){
+        withdraw += inputVal
+        withdrawTxt.innerText = withdraw
+    }
+    else{
+        alert("Please Deposit first")
+    }
+
+    
+    if(inputVal<Balance && inputVal>0){
+        Balance -= inputVal
+        BalanceTxt.innerText = Balance
+    }
 
 }
