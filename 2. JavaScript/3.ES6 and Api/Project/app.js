@@ -17,16 +17,23 @@ const loadData=async()=>{
 
 }
 const displayData = meals =>{
- console.log(meals);
-    const MealContainer = document.getElementById('Container')
-    const DIV = document.createElement("div")
-    DIV.classList.add('w-[400px]','border', 'border-red-200', 'text-center', 'shadow-lg')
-    DIV.innerHTML =`<img src="https://www.themealdb.com/images/media/meals/g046bb1663960946.jpg" alt="food" class="w-full h-[250px] p-3">
-    <h1>name</h1>
-    <p class="">Description:</p>
-    <button class="btn px-4 bg-gray-600 hover:bg-gray-400 text-white m-4 py-2 rounded-md">Details</button>`
 
-    MealContainer.appendChild(DIV)
+    const MealContainer = document.getElementById('Container') 
+    MealContainer.innerHTML = ''
+    meals&&meals.forEach(meal => {
+        console.log(meal);
+           const DIV = document.createElement("div")
+           DIV.classList.add('w-[400px]','border', 'border-red-200', 'text-center', 'shadow-lg')
+            DIV.innerHTML =`<img src=${meal.strMealThumb} alt="food" class="w-full h-[250px] p-3">
+            <h1>Name : ${meal.strMeal}</h1>
+            <p class="truncate p-3">Description: ${meal.strInstructions} </p>
+            <button class="btn px-4 bg-gray-600 hover:bg-gray-400 text-white m-4 py-2 rounded-md">Details</button>`
+            MealContainer.appendChild(DIV)
+    });
+    
+    
+    
+    
 }
 const handleMeal=()=>{
    loadData()
