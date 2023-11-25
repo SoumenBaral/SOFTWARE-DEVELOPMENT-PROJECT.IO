@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <!-- Search search Section -->
+    <section class="flex justify-center items-center py-7">
+       <div>
+        <input  class="px-4 py-2 border-2 border-purple-400" type="text"s id="findMeal" placeholder="Find your Food" autocomplete="false" >
+        <input onclick="handleMeal()" class="bg-slate-600 text-white font-bold px-6 py-2 rounded-e-md hover:bg-slate-700" type="submit" value="Find">
+       </div>   
+    </section>
+
+    <!-- Card Section -->
+    <Section class=" container grid grid-cols-3 m-12 gap-4" id="Container">
+            <div class="w-[400px] border border-red-200 text-center shadow-lg">
+                <img src="https://www.themealdb.com/images/media/meals/g046bb1663960946.jpg" alt="food" class="w-full h-[250px] p-3">
+                <h1>name</h1>
+                <p class="">Description:</p>
+                <button class="btn px-4 bg-gray-600 hover:bg-gray-400 text-white m-4 py-2 rounded-md">Details</button>
+            </div>
+          
+    </Section>
+
+    <script src="app.js"></script>
+</body>
+</html>
