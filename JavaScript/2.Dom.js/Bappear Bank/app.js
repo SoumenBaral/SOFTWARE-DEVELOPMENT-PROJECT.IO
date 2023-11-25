@@ -8,6 +8,31 @@ function inputValue(){
 function getId(id){
 return document.getElementById(id)
 }
+
+
+function GetBalance(token,inputVal){
+    const BalanceTxt = getId("Balance");
+    let Balance = parseInt(BalanceTxt.innerText)
+
+    if(token){
+        
+        
+        if(inputVal>0){
+            Balance += inputVal
+            BalanceTxt.innerText = Balance
+        }
+     
+    }
+    else if(token==false){
+        if(inputVal<Balance && inputVal>0){
+            Balance -= inputVal
+            BalanceTxt.innerText = Balance
+        }
+    }
+
+}
+
+
 function depositBtn(){
     let inputVal = inputValue()
     const DepositTxt = getId("Deposit")
@@ -21,12 +46,8 @@ function depositBtn(){
         alert("Give a Valid amount")
     }
 
-    const BalanceTxt = getId("Balance");
-    let Balance = parseInt(BalanceTxt.innerText)
-    if(inputVal>0){
-        Balance += inputVal
-        BalanceTxt.innerText = Balance
-    }
+    GetBalance(true,inputVal)
+   
 }
 
 function withdrawBTN(){
@@ -44,11 +65,8 @@ function withdrawBTN(){
     else{
         alert("Please Deposit first")
     }
-
     
-    if(inputVal<Balance && inputVal>0){
-        Balance -= inputVal
-        BalanceTxt.innerText = Balance
-    }
+    GetBalance(false,inputVal)
+  
 
 }
