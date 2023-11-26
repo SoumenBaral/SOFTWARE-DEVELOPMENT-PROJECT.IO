@@ -35,16 +35,21 @@ const GetProducts=async(id)=>{
     const Url = `https://openapi.programming-hero.com/api/videos/category/${id}`
         const response = await fetch(Url);
         const data = await response.json();
-        displayProducts(data);
+        if (!data.status) {
+           Display404()
+        }
+        else{
+            displayProducts(data);
+            console.log(data);
+        }
     } catch {
         (err) => {
             console.log(err);
         };
     }
 }
-GetProducts(1000)
+
 const displayProducts= products =>{
- console.log(products);
 
  function Converter(seconds) {
     const convert = new Date(seconds * 1000).toISOString().substr(11, 8);
@@ -85,4 +90,27 @@ const displayProducts= products =>{
    });
 
 
+}
+
+
+const Display404 =()=>{
+        const container = document.getElementById('displayContainer')
+        container.innerHTML = ''
+        const  DIV = document.createElement("div")
+        DIV.innerHTML =`
+        <div class="d-flex align-items-center justify-content-center" style="height: 80vh;">
+        <div class="mx-auto text-center" style="width: 10rem;">
+            <img src="./IMG/Icon.png" class="card-img-top" alt="...">
+            <div class="py-3">
+                <h5 class="text-sm">Oops!! Sorry, There is no content here</h5>
+            </div>
+        </div>
+    </div>
+    `
+    container.appendChild(DIV);
+}
+
+
+const Sort = () =>{
+    
 }
