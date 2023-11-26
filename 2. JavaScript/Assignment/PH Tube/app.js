@@ -1,3 +1,5 @@
+
+
 const getCat =()=>{
     fetch('https://openapi.programming-hero.com/api/videos/categories')
     .then(res => res.json())
@@ -10,15 +12,17 @@ const displayData = Categories=>{
         const DIV = document.createElement('div');
         DIV.innerHTML = `
         <div class = "bg-black bg-opacity-25">
-            <button id="${cat.category_id}" class="btn  text-opacity-100 fw-medium" onclick="GetProducts('${cat.category_id}')">${cat.category}</button>
+            <button id=${cat.category_id} class="btn  text-opacity-100 fw-medium" onclick="GetProducts('${cat.category_id}')">${cat.category}</button>
         </div>`
         CatCnT.appendChild(DIV);
     });
     
 }
 getCat()
-let lastClickedButton = null;
-const GetProducts=(id)=>{
+
+let lastClickedButton = document.getElementById(1000);
+const GetProducts=async(id)=>{
+   
     if (lastClickedButton) {
         lastClickedButton.style.backgroundColor = ""; 
     }
@@ -26,15 +30,19 @@ const GetProducts=(id)=>{
     clickedButton.style.backgroundColor ="red";
    lastClickedButton = clickedButton;
 
-   const Url = `https://openapi.programming-hero.com/api/videos/category/${id}`
-   fetch(Url)
-   .then(res=>res.json())
-   .then(data=> displayProducts(data))
-   .catch(e=>{
-    console.log(e);
-   })
-}
 
+   try {
+    const Url = `https://openapi.programming-hero.com/api/videos/category/${id}`
+        const response = await fetch(Url);
+        const data = await response.json();
+        displayProducts(data);
+    } catch {
+        (err) => {
+            console.log(err);
+        };
+    }
+}
+GetProducts(1000)
 const displayProducts= products =>{
  console.log(products);
 
@@ -44,11 +52,11 @@ const displayProducts= products =>{
 }
    const displayContainer = document.getElementById("displayContainer")
    displayContainer.innerHTML = ''
-   products.data.forEach(product => {
+   products && products.data.forEach(product => {
         const DIV = document.createElement('div');
-        DIV.classList.add("row")
+        DIV.classList.add("col-md-6","col-lg-3","col-sm-12");
         DIV.innerHTML = `
-        <div class=" col-lg-3 col-12 my-2">
+        <div class=" mx-auto ">
             <div class="card h-100 " style="width: 17rem;">
                 <img src="${product.thumbnail}" class="card-img-top" style="width: 100%; height: 250px; object-fit: cover;" alt="${product.title}">
                 <div class="card-body">
@@ -64,7 +72,7 @@ const displayProducts= products =>{
                             <h5 class="card-title">${product.title}</h5>
                             <div class="d-flex">
                                 <p class="card-text">${product.authors[0].profile_name}</p>
-                                <p class=" px-3">${product.authors[0].verified ? '<i class="fa-solid fa-circle-check" style="color: #0088ff;"></i>' : ''}</p>
+                                <p class=" px-3">${product.authors[0].verified ? '<i class="bi bi-patch-check-fill text-primary fw-bold"></i>' : ''}</p>
                             </div>
                             <p class="card-text">${product.others.views}</p>
                         </div>
