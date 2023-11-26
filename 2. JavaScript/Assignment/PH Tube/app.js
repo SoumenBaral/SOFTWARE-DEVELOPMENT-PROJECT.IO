@@ -6,7 +6,6 @@ const getCat =()=>{
     .then(data=>displayData(data.data))
 }
 const displayData = Categories=>{
-    console.log(Categories);
     const CatCnT = document.getElementById("category") 
     Categories.forEach(cat => {
         const DIV = document.createElement('div');
@@ -39,8 +38,8 @@ const GetProducts=async(id)=>{
            Display404()
         }
         else{
-            displayProducts(data);
-            console.log(data);
+            displayProducts(data.data);
+            
         }
     } catch {
         (err) => {
@@ -57,7 +56,7 @@ const displayProducts= products =>{
 }
    const displayContainer = document.getElementById("displayContainer")
    displayContainer.innerHTML = ''
-   products && products.data.forEach(product => {
+   products && products.forEach(product => {
         const DIV = document.createElement('div');
         DIV.classList.add("col-md-6","col-lg-3","col-sm-12");
         DIV.innerHTML = `
@@ -111,6 +110,12 @@ const Display404 =()=>{
 }
 
 
-const Sort = () =>{
+const Sort = async() =>{
+   const res = await fetch("https://openapi.programming-hero.com/api/videos/category/1000")
+   const data = await res.json();
+   console.log(data);
+   const value = data.data.map(val=>{
     
+   })
+
 }
