@@ -20,7 +20,7 @@ const displayData = Categories=>{
 getCat()
 
 let lastClickedButton = document.getElementById(1000);
-const GetProducts=async(id)=>{
+const GetProducts=(id)=>{
    
     if (lastClickedButton) {
         lastClickedButton.style.backgroundColor = ""; 
@@ -28,25 +28,29 @@ const GetProducts=async(id)=>{
     const clickedButton = document.getElementById(id);
     clickedButton.style.backgroundColor ="red";
    lastClickedButton = clickedButton;
+   LoadProduct(id)
 
-
-   try {
-    const Url = `https://openapi.programming-hero.com/api/videos/category/${id}`
-        const response = await fetch(Url);
-        const data = await response.json();
-        if (!data.status) {
-           Display404()
-        }
-        else{
-            displayProducts(data.data);
-            
-        }
-    } 
-    catch(err){
-            console.log(err);
-        };
+  
 
 }
+const LoadProduct=async(id)=>{
+    try {
+        const Url = `https://openapi.programming-hero.com/api/videos/category/${id}`
+            const response = await fetch(Url);
+            const data = await response.json();
+            if (!data.status) {
+               Display404()
+            }
+            else{
+                displayProducts(data.data);
+                
+            }
+        } 
+        catch(err){
+                console.log(err);
+            };
+}
+LoadProduct(1000);
 
 const displayProducts= products =>{
 
@@ -58,7 +62,7 @@ const displayProducts= products =>{
    displayContainer.innerHTML = ''
    products && products.forEach(product => {
         const DIV = document.createElement('div');
-        DIV.classList.add("col-md-6","col-lg-3","col-sm-12");
+        DIV.classList.add("col-md-6","col-lg-3","col-sm-12","my-sm-4");
         DIV.innerHTML = `
         <div class=" mx-auto ">
             <div class="card h-100 " style="width: 17rem;">
@@ -98,7 +102,7 @@ const Display404 =()=>{
         const  DIV = document.createElement("div")
         DIV.innerHTML =`
         <div class="d-flex align-items-center justify-content-center" style="height: 80vh;">
-        <div class="mx-auto text-center" style="width: 10rem;">
+        <div class="mx-auto text-center" style="width: 15rem;">
             <img src="./IMG/Icon.png" class="card-img-top" alt="...">
             <div class="py-3">
                 <h5 class="text-sm">Oops!! Sorry, There is no content here</h5>
