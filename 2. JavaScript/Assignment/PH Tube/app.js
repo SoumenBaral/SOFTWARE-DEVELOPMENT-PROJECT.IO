@@ -64,7 +64,7 @@ const displayProducts= products =>{
         const DIV = document.createElement('div');
         DIV.classList.add("col-md-6","col-lg-3","col-sm-12","my-sm-4");
         DIV.innerHTML = `
-        <div class=" mx-auto ">
+        <div class="container">
             <div class="card h-100 " style="width: 17rem;">
                 <img src="${product.thumbnail}" class="card-img-top" style="width: 100%; height: 250px; object-fit: cover;" alt="${product.title}">
                 <div class="card-body">
