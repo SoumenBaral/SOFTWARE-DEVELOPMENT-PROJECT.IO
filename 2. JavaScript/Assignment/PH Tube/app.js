@@ -71,8 +71,8 @@ const displayProducts= products =>{
                     <div class="d-flex">
                         <img src="${product.authors[0].profile_picture}" style="width: 80px; height: 80px; padding:10px;" class="rounded-circle" alt="${product.authors[0].profile_name}">
                         <div class="card-img-overlay ">
-                        <div class="d-flex" >
-                            <h5 class="card-title text-white bg-dark" style="display: inline; margin-right: 5px; align-self: flex-end;">${product.others.posted_date !== '' ? Converter(product.others.posted_date) : ''}</h5>
+                        <div class="d-flex justify-content-end" >
+                            <h5 class="card-title text-sm fw-normal text-white bg-dark bg-opacity-25" style="display: inline; margin-right: 5px; align-self: flex-end;">${product.others.posted_date !== '' ? Converter(product.others.posted_date)+' ago'  : ''}</h5>
                         </div>
                         </div>
                         <div>
