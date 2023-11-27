@@ -18,3 +18,11 @@ Django :
     --->we give the Request from frontend and backend response the Request
 
     ---> we give the Request via url
+
+
+    Django is a web application framework and it flow MVT pattern
+
+    MVT ===> M--> Model(The data we want to present -Database) 
+             V--> View (Request handler)
+             T--> Template (frontIn)
+
