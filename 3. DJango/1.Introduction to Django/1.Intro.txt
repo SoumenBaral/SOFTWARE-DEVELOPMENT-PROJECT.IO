@@ -34,36 +34,12 @@ Django :
 
 
 
-problem solution for installing: 
-
-1>sudo pip install virtualenv
-        or for python3
-
-        sudo pip3 install virtualenv
-        and then in your dir
-
-        mkdir ~/newproject
-
-        cd ~/newproject
-
-        Now, create a virtual environment within the project directory by typing
-
-        virtualenv newenv
-        To install packages into the isolated environment, you must activate it by typing:
-
-        source newenv/bin/activate
-        now install here with
-
-        pip install django
-        You can verify the installation by typing:
-
-        django-admin --version
-        To leave your virtual environment, you need to issue the deactivate command from anywhere on the system:
-
-deactivate
-
-2.pip install Django
-and then just run the command for testing:
-
-python manage.py runserver
-
+# Start Project in django final in global: 
+-------------------------------------------
+1. sudo apt install python3-django
+2.  django-admin --version 
+3. django-admin startproject myproject
+4. cd myproject
+5. python3 manage.py migrate
+6. python3 manage.py createsuperuser
+7. python3 manage.py runserver
