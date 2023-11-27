@@ -1,3 +1,10 @@
 Django : 
 
     Request <<------------>> response Model 
+
+    There are 4 type of Request:
+
+          1.get Request
+          2.post Request
+          3.update Request
+          4.Delete Request 
