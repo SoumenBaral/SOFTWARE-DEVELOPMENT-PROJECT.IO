@@ -26,3 +26,9 @@ Django :
              V--> View (Request handler)
              T--> Template (frontIn)
 
+
+    Unique Features :
+            1. Admin panel 
+            2. object Relational mapping  (ORM) we will code in python 
+                but convert into database code 
+
