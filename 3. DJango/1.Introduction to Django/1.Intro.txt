@@ -8,3 +8,9 @@ Django :
           2.post Request
           3.update Request
           4.Delete Request 
+
+    All of those is call is CRUD Operation 
+        c--> Create (post Request)
+        r--> Read (get Request)
+        u--> update
+        d--> Delete
