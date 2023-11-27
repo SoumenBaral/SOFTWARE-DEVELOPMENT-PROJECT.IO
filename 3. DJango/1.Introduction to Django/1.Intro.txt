@@ -14,3 +14,7 @@ Django :
         r--> Read (get Request)
         u--> update
         d--> Delete
+
+    --->we give the Request from frontend and backend response the Request
+
+    ---> we give the Request via url
