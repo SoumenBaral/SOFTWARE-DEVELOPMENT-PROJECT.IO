@@ -5,7 +5,7 @@ def home(request):
     return HttpResponse("I am inside the navigation app")
 
 def about(request):
-    pass
+    return render(request,'navigation/about.html')
 
 def contact(request):
-    pass
+    return render(request,'navigation/contact.html')
