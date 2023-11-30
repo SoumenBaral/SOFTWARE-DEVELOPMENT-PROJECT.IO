@@ -7,5 +7,5 @@ from . import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path ('', views.home),
-    path("/navh/",include("nav.urls"))
+    path("navh/",include("nav.urls"))
 ]
