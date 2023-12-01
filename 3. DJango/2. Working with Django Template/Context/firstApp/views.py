@@ -4,7 +4,7 @@ from django.http import HttpResponse
 
 
 def Home(request):
-    d = {"name":"Soumen","Age":25,"list":[1,2,3,"ami",'tumi','danish']}
+    d = {"name":"Soumen","age":5,"list":[1,2,3,"ami",'tumi','danish']}
     return render(request,'Home.html',d)
 
 def About (request):

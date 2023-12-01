@@ -8,7 +8,20 @@
 <body>
    <h1>Welcome your to first App</h1>
     <h2>Author : {{name}}</h2>
-    <h3> Age : {{Age}}</h3>
+    <h3> Age : {{age}}</h3>
     <h3>{{list}}</h3>
+
+    {% comment %} Start Conditional Statement {% endcomment %}
+
+    {% if  age >= 20 %}
+        <h2>You are able to get a driving licence</h2>
+    {% elif age >= 10 and age <= 19 %}
+        <h2>You are not eligible to get the licence</h2>    
+    {% else %}
+        <h2>You are a child</h2>
+    {% endif %}
+
+
+
 </body>
 </html>
