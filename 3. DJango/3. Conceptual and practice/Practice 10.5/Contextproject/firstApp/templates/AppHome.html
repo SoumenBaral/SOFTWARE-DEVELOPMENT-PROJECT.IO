@@ -60,5 +60,18 @@
 
     <h1>random or : {{fun | random}}</h1>
 
+    {% comment %} slice:":2" {% endcomment %}
+
+    <h1>slice: : {{fun | slice:":2"}}</h1>
+    
+    {% comment %} time {% endcomment %}
+
+    <h1>Time : {{current_time}}</h1>
+
+    <h1>{{current_time| time:"H\h i\m"}}</h1>
+    {% comment %} <h1>{{current_time|timesince}}</h1> {% endcomment %} 
+    <h1>{{'Happy coding' | truncatechars:6}}</h1>
+    <h1>{{'Earthly' | make_list}}</h1>
+    <p>{{'amito vala na vala loia thaikp ' | truncatewords:2}}</p>
 </body>
 </html>
