@@ -34,5 +34,6 @@ def AppHome(request):
   },]
     return render(request,'index.html',{"data": data})
 
-def about(request,id):
-    return render(request,'index.html',{"id":id})
+def about(request):
+    
+    return render(request,'index.html',{"id":request.GET})
