@@ -1,3 +1,4 @@
 from django.shortcuts import render
 
-# Create your views here.
+def NavHome(request):
+    return render(request,"NavHome.html")
