@@ -14,6 +14,9 @@
      <h1>{{fun | join:" * "}}</h1>
 
     {% comment %}---->  Date Filter <----------- {% endcomment %}
+    <h1>Short Date : {{today | date:"SHORT_DATE_FORMAT"}}</h1>
+    <h1>Another sort Date : {{today | date}}</h1>
+    <h1>long Date : {{today | date:"D d M Y"}}</h1>
 
 
 
