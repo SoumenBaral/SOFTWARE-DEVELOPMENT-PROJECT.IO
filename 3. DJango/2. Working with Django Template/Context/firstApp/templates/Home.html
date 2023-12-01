@@ -28,7 +28,14 @@
         <h1>-----------------------------------</h1>
     
     {% endfor %}
+            {% comment %} Filter  {% endcomment %}
 
 
+            {{lst}}
+            <h1>{{ lst | join:" ** " }}</h1>
+            <h1>{{ amidate | date:"D d M Y" }}</h1>
+            <h1>{{ lst | length }}</h1>
+            <h1>{{'Happy coding. Python is fun.' | truncatewords:3}}</h1>
+            <h1>{{"Python is Fun" | cut:" "}}</h1>
 </body>
 </html>
