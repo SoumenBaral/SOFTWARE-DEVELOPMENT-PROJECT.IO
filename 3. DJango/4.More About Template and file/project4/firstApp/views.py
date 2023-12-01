@@ -33,3 +33,6 @@ def AppHome(request):
     "body": "repudiandae veniam quaerat sunt sed\nalias aut fugiat sit autem sed est\nvoluptatem omnis possimus esse voluptatibus quis\nest aut tenetur dolor neque"
   },]
     return render(request,'index.html',{"data": data})
+
+def about(request,id):
+    return render(request,'index.html',{"id":id})
