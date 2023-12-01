@@ -31,5 +31,30 @@
     <h1>cut the space :  {{fundus|cut:" "}}</h1>
     <h1>cut M : {{fundus|cut:"M"}} </h1>
 
+    {% comment %} sortBy {% endcomment %}
+    <h1>Sort By a,b,c....: {{ sortBy | dictsort:"name" }}</h1>
+
+    <h1>--------------------------------------------------------</h1>
+   
+    {% comment %} first value of an array  {% endcomment %}
+
+    <h1>first : {{fun | first}}</h1>
+
+    <h1>Last : {{fun | last}}</h1>
+
+    {% comment %} Length Filter {% endcomment %}
+
+    <h1>length of My fun array : {{fun|length}}</h1>
+    <h1>---------------------------------------------------</h1>
+    {% comment %} Linenumbers Filter {% endcomment %}
+    <h1>List : {{ "nai"  | linenumbers}}</h1>
+
+    {% comment %} Lower Filter ans upper and title  {% endcomment %}
+
+    <h1>Higer : {{fundus | upper}}</h1>
+    <h1>lower : {{fundus | lower}}</h1>
+    <h1>title : {{fundus | title}}</h1>
+
+
 </body>
 </html>
