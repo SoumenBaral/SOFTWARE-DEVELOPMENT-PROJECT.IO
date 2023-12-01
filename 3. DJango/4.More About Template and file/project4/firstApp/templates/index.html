@@ -48,6 +48,30 @@
       </nav>
 
       {% comment %} Table Section {% endcomment %}
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">UserId</th>
+            <th scope="col">Id</th>
+            <th scope="col">Title</th>
+            <th scope="col">Body</th>
+
+          </tr>
+        </thead>
+        <tbody>
+           {% for i in data  %}
+           <tr>
+            <th scope="row">1</th>
+            <td>{{i.id}}</td>
+            <td>{{i.title}}</td>
+            <td>{{i.body}}</td>
+          </tr>
+           
+           {% endfor %}
+          
+        </tbody>
+      </table>
+
     <h1>welcome to App Home </h1>
     <img src="{% static "images/bird3.webp" %}" alt="" srcset="">
 
