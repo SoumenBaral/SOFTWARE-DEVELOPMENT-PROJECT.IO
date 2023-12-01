@@ -21,6 +21,13 @@
         <h2>You are a child</h2>
     {% endif %}
 
+    {% comment %} For Loop {% endcomment %}
+    {% for i in course %}
+        <h1> CouseId : {{i.Id}}</h1>
+        <h1>Name : {{i.name}} </h1>
+        <h1>-----------------------------------</h1>
+    
+    {% endfor %}
 
 
 </body>
