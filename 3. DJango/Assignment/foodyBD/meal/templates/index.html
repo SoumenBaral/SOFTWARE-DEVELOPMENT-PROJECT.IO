@@ -1,14 +1,14 @@
 {% extends "base.html" %}
 
 {% block content %}
-        <h1 class='text-center m-4 test'><span class="text-danger">....... </span>Meal<span class="text-danger"> .......</span></h1>
+        <h1 class='text-center m-4 test'><span class="text-danger fs-6">....... </span>Meal<span class="text-danger fs-6"> .......</span></h1>
         <div class='container mt-4'>
             <div class='row gap-4'>
                 {% for i in data %}
                     <div class="card col-4" style="width: 18rem;">
                         <img src="{{i.strCategoryThumb}}" class="card-img-top" alt="...">
                         <div class="card-body">
-                        <h5 class="card-title">{{i.strCategory}}</h5>
+                        <h5 class="card-title">{{i.idCategory}}. {{i.strCategory}}</h5>
                         <p class="card-text">{{i.strCategoryDescription|truncatewords:10}}</p>
                         </div>
                     </div>
