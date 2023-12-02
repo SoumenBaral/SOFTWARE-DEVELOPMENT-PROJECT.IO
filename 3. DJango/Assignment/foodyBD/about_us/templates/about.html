@@ -1,5 +1,16 @@
 {% extends "base.html" %}
-
+{% load static %}
 {% block content %}
-<h1 class='test'>Do you Know about me </h1>
+<div class='row  bg-secondary bg-gradient bg-opacity-50'>
+    <div class='col-md-6 col-12 text-center mt-5'>
+
+        <h1 class='x'>Soumen Baral</h1>
+        <h3> <span class='text-danger'>CEO</span> of  <span class='text-primary'>Foody</span><span class='bd'>BD</span> </h3>
+        <p >We are here to provied you the best food in the word . our food is so much testy to eat and so cheap praice .But the quality of our food is Number One .Enjoy your meal sir</p>
+        <button class='bg-primary px-3 py-2 rounded text-white'>Contact</button>
+    </div>
+    <div  class='col-md-6 col-12'>
+        <img class ='border rounded-circle' src="{% static "images/Me.jpeg" %}" width="75%"  alt="" srcset="">
+    </div>
+</div>
 {% endblock content %}
