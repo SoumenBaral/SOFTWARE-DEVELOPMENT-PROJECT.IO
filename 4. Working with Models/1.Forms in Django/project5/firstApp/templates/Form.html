@@ -2,7 +2,7 @@
 {% block content %}
 <div class='centered'>
     <h2>Have you work with form </h2>
-    <form action="">
+    <form method="post" action="/about/">
         <div class='mb-3'>
             <label for="exampleInputName" class = 'form-label'>Name</label>
             <input 
@@ -23,6 +23,15 @@
                 name="email"
             >
         </div>
+        <select name="select" aria-label="Default select example"  class = 'form-select'>
+            <option value="">Rating</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+        </select>
+        <button type="submit" class="btn btn-primary mt-5">Submit</button>
     </form>
 </div>
 
