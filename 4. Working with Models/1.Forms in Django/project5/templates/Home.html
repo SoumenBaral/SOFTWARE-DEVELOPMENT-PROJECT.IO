@@ -1,4 +1,9 @@
 {% extends "base.html" %}
+{% load static %}
 {% block content %}
-<h1 class = 'text-center'>Welcome Home</h1>
+<div class='centered' >
+    <h1 class = 'text-center'>Welcome Home</h1>
+    <img src="{% static "images/Welcome.jpg" %}" width='100%' alt="" srcset="">
+</div>
+
 {% endblock content %}
