@@ -2,7 +2,7 @@
 {% block content %}
 <div class='centered'>
     <h2>Have you work with form </h2>
-    <form method="GET" action="/firstApp/about/">
+    <form method="POST" action="/firstApp/about/">
         {% csrf_token %}
         <div class='mb-3'>
             <label for="exampleInputName" class = 'form-label'>Name</label>

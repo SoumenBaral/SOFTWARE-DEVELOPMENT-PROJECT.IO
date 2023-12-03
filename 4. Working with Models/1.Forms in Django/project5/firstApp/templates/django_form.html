@@ -1,1 +1,7 @@
 {% extends "base.html" %}
+{% block content %}
+<form class='centered'> 
+    {{form.as_p}}
+    <button type="submit" class="btn btn-primary mt-5">Submit</button>
+</form>
+{% endblock content %}
