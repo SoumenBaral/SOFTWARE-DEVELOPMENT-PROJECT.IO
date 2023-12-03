@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block content %}
+<div class='centered'>
+    <h2>Have you work with form </h2>
+    <form action="">
+        <div class='mb-3'>
+            <label for="exampleInputName" class = 'form-label'>Name</label>
+            <input 
+                type="text"
+                class="form-control"
+                id="exampleInputName"
+                aria-describedby="nameHelp"
+                name="username"
+            >
+        </div>
+        <div class='mb-3'>
+            <label for="exampleInputemail" class = 'form-label'>Email</label>
+            <input 
+                type="text"
+                class="form-control"
+                id="exampleInputName"
+                aria-describedby="nameHelp"
+                name="email"
+            >
+        </div>
+    </form>
+</div>
+
+{% endblock content %}
