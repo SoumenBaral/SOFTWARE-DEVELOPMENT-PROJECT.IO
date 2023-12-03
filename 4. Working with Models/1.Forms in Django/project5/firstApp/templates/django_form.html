@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
 {% load crispy_forms_tags %}
-<form class='centered' medhod="POST" enctype='multipart/form-data'> 
+<form class='centered' method="post"  enctype="multipart/form-data" > 
     {% csrf_token %}
     {% comment %} {{form.as_p}} {% endcomment %}
     {{form|crispy}}
