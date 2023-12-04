@@ -1,18 +1,25 @@
 {% extends "base.html" %}
 {% block content %}
-<h1>Welcome Form </h1>
-{{data}}
-<table class="table">
+<h1 class='text-center'>Welcome Form </h1>
+
+<table class="table mt-5" style = "width:75%; margin:auto;">
     <thead>
       <tr>
         <th scope="col">Roll</th>
         <th scope="col">Name</th>
-        <th scope="col">Last</th>
-        <th scope="col">Handle</th>
+        <th scope="col">Address</th>
+        <th scope="col">Father's Name</th>
       </tr>
     </thead>
     <tbody>
-     
+     {% for st in  data%}
+     <tr>
+        <td>{{st.roll}}</td>
+        <td>{{st.name}}</td>
+        <td>{{st.address}}</td>
+        <td>{{st.father_name}}</td>
+      </tr>
+     {% endfor %}
     
     </tbody>
   </table>
