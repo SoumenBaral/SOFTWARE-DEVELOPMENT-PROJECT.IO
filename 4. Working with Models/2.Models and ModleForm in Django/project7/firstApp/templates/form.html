@@ -1,26 +1,30 @@
 {% extends "base.html" %}
 {% block content %}
 <h1 class='text-center'>Welcome Form </h1>
-
-<table class="table mt-5" style = "width:75%; margin:auto;">
-    <thead>
-      <tr>
-        <th scope="col">Roll</th>
-        <th scope="col">Name</th>
-        <th scope="col">Address</th>
-        <th scope="col">Father's Name</th>
-      </tr>
-    </thead>
-    <tbody>
-     {% for st in  data%}
-     <tr>
-        <td>{{st.roll}}</td>
-        <td>{{st.name}}</td>
-        <td>{{st.address}}</td>
-        <td>{{st.father_name}}</td>
-      </tr>
-     {% endfor %}
+    {% if data %}
+        <table class="table mt-5" style = "width:75%; margin:auto;">
+            <thead>
+            <tr>
+                <th scope="col">Roll</th>
+                <th scope="col">Name</th>
+                <th scope="col">Address</th>
+                <th scope="col">Father's Name</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for st in  data%}
+            <tr>
+                <td>{{st.roll}}</td>
+                <td>{{st.name}}</td>
+                <td>{{st.address}}</td>
+                <td>{{st.father_name}}</td>
+            </tr>
+            {% endfor %}
+            
+            </tbody>
+        </table>
+    {% else %}
+        <h1>No Data Found </h1>
     
-    </tbody>
-  </table>
+        {% endif %}
 {% endblock content %}
