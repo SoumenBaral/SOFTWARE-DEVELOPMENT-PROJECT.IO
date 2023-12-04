@@ -19,7 +19,7 @@
                 <td>{{st.name}}</td>
                 <td>{{st.address}}</td>
                 <td>{{st.father_name}}</td>
-                <td><input type="submit" value="delete" class="btn btn-danger"></td>
+                <td><a href="{% url "delete_student" st.roll %}"  class="btn btn-danger text-white" >delete</a></td>
             </tr>
             {% endfor %}
             
