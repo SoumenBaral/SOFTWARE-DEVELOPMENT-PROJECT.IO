@@ -1,14 +1,15 @@
 {% extends "base.html" %}
 {% block content %}
-<h1 class='text-center'>Welcome Form </h1>
+<h1 class='text-center '>Welcome Form </h1>
     {% if data %}
-        <table class="table mt-5" style = "width:75%; margin:auto;">
-            <thead>
+        <table class="table mt-5 " style = "width:75%; margin:auto;">
+            <thead class="table-secondary">
             <tr>
                 <th scope="col">Roll</th>
                 <th scope="col">Name</th>
                 <th scope="col">Address</th>
                 <th scope="col">Father's Name</th>
+                <th scope='col'>Action</th>
             </tr>
             </thead>
             <tbody>
@@ -18,6 +19,7 @@
                 <td>{{st.name}}</td>
                 <td>{{st.address}}</td>
                 <td>{{st.father_name}}</td>
+                <td><input type="submit" value="delete" class="btn btn-danger"></td>
             </tr>
             {% endfor %}
             
