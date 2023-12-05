@@ -1,5 +1,7 @@
 from django import forms
 from django.forms.widgets import NumberInput
+import datetime
+
 
 class MyContact(forms.Form):
     Name = forms.CharField()
@@ -13,3 +15,13 @@ class MyContact(forms.Form):
     BirthYear = forms.DateField(widget=forms.SelectDateWidget(years=BIRTH_YEAR_CHOICES))
     message = forms.CharField(max_length = 10,)
     first_name = forms.CharField(initial='Your name')
+    Day = forms.DateField(initial=datetime.date.today)
+    FAVORITE_COLORS_CHOICES = [
+    ('blue', 'Blue'),
+    ('green', 'Green'),
+    ('black', 'Black'),
+    ]
+    favorite_color = forms.ChoiceField(choices=FAVORITE_COLORS_CHOICES)
+    ColorPiker = forms.ChoiceField(widget=forms.RadioSelect ,choices=FAVORITE_COLORS_CHOICES)
+    MultiColor = forms.MultipleChoiceField(choices=FAVORITE_COLORS_CHOICES)
+    MultiModelColor = forms.MultipleChoiceField( widget = forms.CheckboxSelectMultiple,choices=FAVORITE_COLORS_CHOICES)
