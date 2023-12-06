@@ -25,3 +25,4 @@ class MyContact(forms.Form):
     ColorPiker = forms.ChoiceField(widget=forms.RadioSelect ,choices=FAVORITE_COLORS_CHOICES)
     MultiColor = forms.MultipleChoiceField(choices=FAVORITE_COLORS_CHOICES)
     MultiModelColor = forms.MultipleChoiceField( widget = forms.CheckboxSelectMultiple,choices=FAVORITE_COLORS_CHOICES)
+# start
