@@ -1,6 +1,23 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h1> LogIn here </h1>
+{% csrf_token %}
+   <div style="width: 75%; margin:auto" class='mt-5'>
+    <form method="POST" action='{% url "login" %}'>
+       
+        <div class="mb-3">
+          <label for="exampleInputname" class="form-label">Name</label>
+          <input type="text" class="form-control" id="exampleInputname">
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Email address</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+        </div>
+  
+       
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+   </div>
 {% endblock content %}
 
