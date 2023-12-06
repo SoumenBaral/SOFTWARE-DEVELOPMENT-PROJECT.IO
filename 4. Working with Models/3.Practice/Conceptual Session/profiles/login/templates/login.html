@@ -1,23 +1,39 @@
 {% extends "base.html" %}
-
 {% block content %}
-{% csrf_token %}
-   <div style="width: 75%; margin:auto" class='mt-5'>
-    <form method="POST" action='{% url "login" %}'>
-       
-        <div class="mb-3">
-          <label for="exampleInputname" class="form-label">Name</label>
-          <input type="text" class="form-control" id="exampleInputname">
+<div class='container'>
+    <h2>Have you work with form </h2>
+    <form method="POST">
+        {% csrf_token %}
+        <div class='mb-3'>
+            <label for="exampleInputName" class = 'form-label'>Name</label>
+            <input 
+                type="text"
+                class="form-control"
+                id="exampleInputName"
+                aria-describedby="nameHelp"
+                name="username"
+            >
         </div>
-        <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">Email address</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+        <div class='mb-3'>
+            <label for="exampleInputemail" class = 'form-label'>Email</label>
+            <input 
+                type="text"
+                class="form-control"
+                id="exampleInputName"
+                aria-describedby="nameHelp"
+                name="email"
+            >
         </div>
-  
-       
-        <button type="submit" class="btn btn-primary">Submit</button>
-      </form>
-   </div>
-{% endblock content %}
+        <select name="select" aria-label="Default select example"  class = 'form-select'>
+            <option value="">Rating</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+        </select>
+        <button type="submit" class="btn btn-primary mt-5">Submit</button>
+    </form>
+</div>
 
+{% endblock content %}
