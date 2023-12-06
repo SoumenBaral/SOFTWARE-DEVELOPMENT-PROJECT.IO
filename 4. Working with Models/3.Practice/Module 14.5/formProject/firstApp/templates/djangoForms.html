@@ -1,9 +1,10 @@
 {% extends "base.html" %}
 {% block content %}
 {% load crispy_forms_tags %}
-<h1 class='text-center'>Contact Form</h1>
+<h1 class='text-center'>Contact Django Form</h1>
 <div style="width: 50%; margin: auto;">
     <form action="">
+        {% csrf_token %}
         {{form|crispy}}
     
         <input type="submit" value="submit" class="btn btn-primary">

@@ -1,5 +1,6 @@
 from django import forms
 from django.forms.widgets import NumberInput
+from .models import MyModel
 import datetime
 
 
@@ -26,3 +27,9 @@ class MyContact(forms.Form):
     MultiColor = forms.MultipleChoiceField(choices=FAVORITE_COLORS_CHOICES)
     MultiModelColor = forms.MultipleChoiceField( widget = forms.CheckboxSelectMultiple,choices=FAVORITE_COLORS_CHOICES)
 
+
+
+class MyModelForm(forms.ModelForm):
+    class Meta:
+        model = MyModel
+        fields = '__all__'
