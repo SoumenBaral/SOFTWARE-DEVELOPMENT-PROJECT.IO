@@ -1,4 +1,6 @@
 from django.shortcuts import render
+from .forms import AuthorForm
 
 def AddAuthor(request):
-    return render(request,'Author.html')
+    form = AuthorForm
+    return render(request,'Author.html',{"form":form})
