@@ -1,5 +1,6 @@
 from django.shortcuts import render,redirect
 from . import forms
+from . import models
 
 # Create your views here.
 def AddPost(request):
@@ -12,5 +13,18 @@ def AddPost(request):
         form = forms.AddPost
         return  render(request,'Posts.html',{"form":form})
     
-def EditPost(request):
-    pass
+def EditPost(request,id):
+    post = models.Posts.objects.get(pk=id)
+    print(post.Name)
+    if request.method == 'POST':
+        form = forms.AddPost(request.POST ,instance=post)
+        if form.is_valid():
+            form.save()
+            return redirect('home')
+    else:
+        form = forms.AddPost(instance=post)
+        return  render(request,'Posts.html',{"form":form})
+
+def DeletePost(request,id):
+    print (id)
+    return redirect('home')
