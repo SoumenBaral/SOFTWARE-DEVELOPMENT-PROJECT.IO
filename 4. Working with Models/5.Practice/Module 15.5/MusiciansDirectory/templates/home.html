@@ -19,10 +19,10 @@
         <td>{{i.Musician.FirstName}}  {{i.Musician.LastName}}</td>
         <td>{{i.Rating.rating}}</td>
         <td>
-        {% comment %} {% for instu in i.Musician.%}
-        {{instu}}
-        {% endfor %}  {% endcomment %}
-        <p>Guiter</p>
+        {% for j in i.Musician.Instruments.all %}
+        {{j.name}}
+        {% endfor %}
+        {% comment %} <p>Guiter</p> {% endcomment %}
         </td>
         <td>{{i.AlbumName}}</td>
         <td>{{i.releaseDate}}</td>
