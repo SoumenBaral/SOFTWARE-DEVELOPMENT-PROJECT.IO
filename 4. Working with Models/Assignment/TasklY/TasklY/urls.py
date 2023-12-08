@@ -6,7 +6,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',views.Home,name='home'),
     path('add/',include('AddCategory.urls')),
-    path('add/',include('AddTask.urls'))
+    path('add/',include('AddTask.urls')),
+    path('showTask/',views.ShowTask , name='showTask')
 
 
 ]
