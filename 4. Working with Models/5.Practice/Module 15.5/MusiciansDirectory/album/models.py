@@ -1,11 +1,11 @@
 from django.db import models
 from musician.models import Musician
-
+from datetime import date
 # Create your models here.
 class Album(models.Model):
     AlbumName = models.CharField(max_length=100)
     Musician = models.ForeignKey(Musician,on_delete=models.CASCADE)
-    releaseDate = models.DateTimeField(auto_now=False, auto_now_add=False)
+    releaseDate = models.DateTimeField(("Date"), default=date.today)
     Rating = models.OneToOneField('Ratings', on_delete=models.CASCADE)
     def __str__ (self) -> str:
         return self.AlbumName
