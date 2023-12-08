@@ -6,7 +6,7 @@ class Musician(models.Model):
     LastName = models.CharField(max_length=100)
     Email = models.EmailField(max_length=200)
     PhoneNumber = models.CharField(max_length=11)
-    Instruments = models.ManyToManyField('Instrument',)
+    Instruments = models.ManyToManyField('Instrument')
     def __str__ (self) -> str:
         return self.FirstName
 
