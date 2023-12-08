@@ -1,16 +1,14 @@
 from django.shortcuts import render,redirect
 from . import  forms
 
-def AddAuthor(request):
+def AddProfiles(request):
     if request.method == 'POST':
-        form =forms.AuthorForm(request.POST)
+        form =forms.ProfileForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('addAuthor')
+            return redirect('addProf')
         
     else:
-        form = forms.AuthorForm
-        return render(request,'Author.html',{"form":form})
+        form = forms.ProfileForm
+        return render(request,'profiles.html',{"form":form})
 
-def AddProfiles(request):
-    return render(request,'profiles.html')

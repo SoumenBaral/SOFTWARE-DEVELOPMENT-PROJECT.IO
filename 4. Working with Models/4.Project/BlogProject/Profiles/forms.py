@@ -2,6 +2,6 @@ from .models import Profile
 from django import forms
 
 class ProfileForm(forms.ModelForm):
-    class Meta:
+     class Meta:
         model = Profile
-        fields = ("_all__",)
+        fields = '__all__'

@@ -1,5 +1,12 @@
 {% extends "base.html" %}
 {% block content %}
-<h1 class="text-center" >Welcome to our Bolg Project --- Posts</h1>
+{% load crispy_forms_tags %}
+<h1 class="text-center" >Add Posts</h1>
+<form method="post">
+    {% csrf_token %}
+    {{form|crispy}}
+    <button class ='btn btn-primary' >Add post</button>
+
+</form>
 
 {% endblock content %}

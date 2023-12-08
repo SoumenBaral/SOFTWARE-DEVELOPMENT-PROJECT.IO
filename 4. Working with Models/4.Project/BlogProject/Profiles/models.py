@@ -3,7 +3,7 @@ from Author.models import Author
 
 # Create your models here.
 
-class Profile (models.Model):
+class Profile(models.Model):
     Name = models.CharField(max_length=100)
     About = models.TextField()
     author = models.OneToOneField(Author,on_delete=models.CASCADE ,default=None)
