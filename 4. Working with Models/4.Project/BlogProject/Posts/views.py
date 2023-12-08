@@ -26,5 +26,6 @@ def EditPost(request,id):
         return  render(request,'Posts.html',{"form":form})
 
 def DeletePost(request,id):
-    print (id)
+    post = models.Posts.objects.get(pk=id)
+    post.delete()
     return redirect('home')
