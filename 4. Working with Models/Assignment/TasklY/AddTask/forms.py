@@ -7,5 +7,7 @@ class TaskForm(forms.ModelForm):
         model = models.TaskModel
         fields = '__all__'
         widgets = {
-            'AssignDate': forms.DateInput(attrs={'type': 'date'})
+            'AssignDate': forms.DateInput(attrs={'type': 'date'}),
+            'taskDescription':forms.Textarea(attrs={'class': 'custom-class', 'rows': 4, 'placeholder': 'Enter text here'})
+            
         }
