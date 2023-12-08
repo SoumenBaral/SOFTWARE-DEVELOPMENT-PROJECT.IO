@@ -11,3 +11,6 @@ def AddPost(request):
     else:
         form = forms.AddPost
         return  render(request,'Posts.html',{"form":form})
+    
+def EditPost(request):
+    pass
