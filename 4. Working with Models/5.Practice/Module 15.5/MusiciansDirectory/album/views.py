@@ -1,4 +1,5 @@
 from django.shortcuts import render
-
+from . import forms
 def AddAlbum(request):
-    return render(request,'album.html')
+    form = forms.AddAlbum 
+    return render(request,'album.html',{"form":form})

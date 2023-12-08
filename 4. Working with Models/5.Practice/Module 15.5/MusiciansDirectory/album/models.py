@@ -5,15 +5,14 @@ from musician.models import Musician
 class Album(models.Model):
     AlbumName = models.CharField(max_length=100)
     Musician = models.ForeignKey(Musician,on_delete=models.CASCADE)
-    Email = models.EmailField(max_length=200)
-    PhoneNumber = models.CharField(max_length=11)
-    
+    releaseDate = models.DateTimeField(auto_now=False, auto_now_add=False)
+    Rating = models.OneToOneField('Ratings', on_delete=models.CASCADE)
     def __str__ (self) -> str:
-        return self.FirstName
+        return self.AlbumName
 
 
-class Instrument(models.Model):
-    name = models.CharField(max_length=100)
+class Ratings(models.Model):
+    rating = models.CharField(max_length=100)
 
     def __str__(self):
-        return self.name
+        return self.rating
