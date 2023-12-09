@@ -24,4 +24,4 @@ def EditTask(request,id):
 def DeleteTask(request,id):
     post = models.TaskModel.objects.get(pk=id)
     post.delete()
-    return redirect('home')
+    return redirect('showTask')

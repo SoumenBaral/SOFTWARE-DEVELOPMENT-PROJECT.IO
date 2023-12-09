@@ -22,7 +22,7 @@
                     <hr class='border-warning'>
                   <div style='width: 50%; margin:auto;'>
                     {% if i.is_completed %}
-                    <a href=""><span class="btn btn-info btn-sm">Complete</span></a>
+                    <a href=""><span class="btn btn-info btn-sm">Completed</span></a>
                     
                     {% else %}
                     <a href="{% url "edit" i.id%}" class="btn btn-warning  btn-sm">Edit</a>
