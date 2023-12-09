@@ -1,8 +1,8 @@
 from django.shortcuts import render
-from AddCategory.models import AddCategory
+from AddTask.models import TaskModel
 def Home(request):
     return render(request,'Home.html')
 
 def ShowTask(request):
-    data = AddCategory.objects.all()
+    data = TaskModel.objects.all()
     return render(request,'ShowTask.html',{"data":data})

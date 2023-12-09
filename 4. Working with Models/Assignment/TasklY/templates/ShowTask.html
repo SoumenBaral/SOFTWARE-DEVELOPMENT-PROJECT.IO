@@ -1,25 +1,34 @@
 {% extends "base.html" %}
 {% block content %}
-<h1>Show Task</h1>
+<h3 class='text-center text-success'>Task</h3>
 <div style="width: 75%; margin: auto;">
     <div class='d-flex flex-wrap justify-content center align-item-center '>
         {% for i in data  %}
-            <div class="card col-sm-3 m-3" style="width: 18rem;">
+            <div class="card col-sm-3 m-3 shadow-lg bg-primary bg-opacity-10" style="width: 18rem;">
                 <div class="card-body">
-                    <h5 class="card-title">{{i.CategoryIsFor.id}}</h5>
-                    <h6 class="card-subtitle mb-2 text-body-secondary">AssignDate:  {{i.CategoryIsFor.AssignDate}}</h6>
-                    <p class="card-text">{{i.CategoryIsFor.taskDescription}}</p>
+                    <h5 class="card-title text-danger">{{i.id}} - <small class='text-warning'>{{i.taskTitle}}</small></h5>
+                    <h6 class="card-subtitle mb-2 text-body-secondary">AssignDate :  {{i.AssignDate}}</h6>
+                    <hr class='border-danger'>
+                    <p class="card-text">{{i.taskDescription}}</p>
+                    
                     <div class ='mb-4'>
                         <h6>Categories:</h6>
                         <div class='d-flex flex-wrap' >
-                            {% for cat in i.all %} 
-                                <button class="btn btn-primary btn-opasity-25 rounded btn-sm m-1 fw-bold" disabled ><small>{{cat.CategoryName}} </small></button>
+                            {% for cat in i.category.all %} 
+                                <button class="badge bg-primary m-1 text-bg-opacity-100  fw-bold" disabled ><small>{{cat.CategoryName}} </small></button>
                             {% endfor %}
                         </div>
                     </div>
-
-                    {% comment %} <a href="{% url "edit" i.id %}" class="btn btn-warning">Edit</a>
-                    <a href="{% url "delete" i.id %}" class="btn btn-danger">Delete</a> {% endcomment %}
+                    <hr class='border-warning'>
+                  <div style='width: 50%; margin:auto;'>
+                    {% if i.is_completed %}
+                    <a href=""><span class="btn btn-info btn-sm">Complete</span></a>
+                    
+                    {% else %}
+                    <a href="{% url "edit" i.id%}" class="btn btn-warning  btn-sm">Edit</a>
+                    <a href="{% url "delete" i.id %}" class="btn btn-danger  btn-sm">Delete</a>
+                    {% endif %}
+                  </div>
                 </div>
             </div>
     {% endfor %}
