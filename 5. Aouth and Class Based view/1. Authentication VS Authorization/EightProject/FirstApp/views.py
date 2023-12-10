@@ -6,4 +6,13 @@ def Home(request):
     return render(request,'home.html')
 
 def signUp(request):
-    pass
+    if request.method == 'POST':
+        form = RegistrationForm(request.POST)
+        if form.is_valid:
+            form.save(commit=False)
+            print(form.cleaned_data)
+        
+        else :
+            form = RegistrationForm()
+            return render(request,'signUp.html',{"form":form})
+
