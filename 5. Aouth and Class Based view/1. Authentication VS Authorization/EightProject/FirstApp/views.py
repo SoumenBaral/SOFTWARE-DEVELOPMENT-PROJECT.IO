@@ -13,9 +13,10 @@ def signUp(request):
         if request.method == 'POST':
             form = RegistrationForm(request.POST)
             if form.is_valid():
-                messages.success("Account Created Successfully")
+                messages.success(request,"Account Created Successfully")
                 form.save()
                 print(form.cleaned_data)
+                return redirect('home')
             
         else :
             form = RegistrationForm()
@@ -30,7 +31,8 @@ def profile(request):
     pass
 
 def LogOut(request):
-    pass
+    logout(request)
+    return redirect('signUp')
 
 def PassChangeWithOldPass(request):
     pass
