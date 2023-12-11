@@ -2,18 +2,20 @@
 {% load crispy_forms_tags %}
 {% block content %} 
 
-<h1>welcome to profile</h1>
-<h1>Hello {{user}}</h1>
+<h4 class='text-center'>welcome to profile</h4>
+<h5 class='text-center'> Hello : {{user}}</h5>
 
 {% if messages %}
     {% for m in messages %}
-    <p class="bg-success p-3 text-white">{{m}}</p>
+    <p class="bg-success p-3 text-white text-center">{{m}}</p>
     {% endfor %}
     {% endif %}
     <br/>
-<p><a class="btn btn-info" href="">Change Your Password</a>
-<a class="btn btn-warning" href="">Change Your Password without old pass</a></p>
-
+<div style="width:75%; margin:auto; ">
+  <p class="d-flex justify-content-around"><a class="btn btn-outline-primary" href="">Change Your Password</a>
+    <a class="btn btn-outline-warning" href="">Change Your Password without old pass</a></p>
+    
+</div>
 <form method="post" style="width: 50%; margin: auto" novalidate>
       {% csrf_token %}
       {% if form.non_field_errors %}
