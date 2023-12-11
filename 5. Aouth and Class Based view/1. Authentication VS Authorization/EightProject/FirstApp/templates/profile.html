@@ -12,8 +12,8 @@
     {% endif %}
     <br/>
 <div style="width:75%; margin:auto; ">
-  <p class="d-flex justify-content-around"><a class="btn btn-outline-primary" href="">Change Your Password</a>
-    <a class="btn btn-outline-warning" href="">Change Your Password without old pass</a></p>
+  <p class="d-flex justify-content-around"><a class="btn btn-outline-primary" href="{% url "withOldPass" %}">Change Your Password</a>
+    <a class="btn btn-outline-warning" href="{% url "withOutOldPass" %}">Change Your Password without old pass</a></p>
     
 </div>
 <form method="post" style="width: 50%; margin: auto" novalidate>

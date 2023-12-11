@@ -62,9 +62,34 @@ def LogOut(request):
     return redirect('signUp')
 
 def PassChangeWithOldPass(request):
-    pass
+    if request.user.is_authenticated:
+        if request.method == 'POST':
+            form = PasswordChangeForm(user=request.user, data=request.POST)
+            if form.is_valid():
+                form.save()
+                # password update korbe
+                update_session_auth_hash(request, form.user)
+                return redirect('profile')
+        else:
+            form = PasswordChangeForm(user=request.user)
+        return render(request, 'passChange.html', {'form': form})
+    else:
+        return redirect('login')
+    
 def PassChangeWithoutOldPass(request):
-    pass
+    if request.user.is_authenticated:
+        if request.method == 'POST':
+            form = SetPasswordForm(user=request.user, data=request.POST)
+            if form.is_valid():
+                form.save()
+                # password update korbe
+                update_session_auth_hash(request, form.user)
+                return redirect('profile')
+        else:
+            form = SetPasswordForm(user=request.user)
+        return render(request, 'passChange.html', {'form': form})
+    else:
+        return redirect('login')
 
 def changeUserData(request):
     pass
