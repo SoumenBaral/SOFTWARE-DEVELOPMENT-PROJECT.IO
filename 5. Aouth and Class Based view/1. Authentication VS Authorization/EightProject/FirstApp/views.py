@@ -9,19 +9,20 @@ def Home(request):
     return render(request,'home.html')
 
 def signUp(request):
-    
+    # if not request.user.is_authenticated:
         if request.method == 'POST':
             form = RegistrationForm(request.POST)
             if form.is_valid():
                 messages.success(request,"Account Created Successfully")
                 form.save()
                 print(form.cleaned_data)
-                return redirect('home')
+                # return redirect('home')
             
         else :
             form = RegistrationForm()
         return render(request,'signUp.html',{"form":form})
-
+    # else:
+    #     return redirect('profile')
 
 def user_login(request):
    pass
