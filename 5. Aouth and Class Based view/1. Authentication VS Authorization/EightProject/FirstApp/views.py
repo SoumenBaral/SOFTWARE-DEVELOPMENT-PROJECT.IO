@@ -50,9 +50,10 @@ def profile(request):
             if form.is_valid():
                 messages.success(request, 'Account updated successfully')
                 form.save()
+                return redirect("profile")
         else:
             form = ChangeUserData(instance=request.user)
-        return render(request,'profile.html', {'form': form})
+            return render(request,'profile.html',{'form':form})
     else:
         return redirect('signUp')
 
