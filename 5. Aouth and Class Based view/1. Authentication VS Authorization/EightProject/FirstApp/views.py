@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect
-from .forms import RegistrationForm
+from .forms import RegistrationForm ,ChangeUserData
 from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm, PasswordChangeForm,SetPasswordForm
 from django.contrib.auth import authenticate,login,logout,update_session_auth_hash
@@ -9,7 +9,7 @@ def Home(request):
     return render(request,'home.html')
 
 def signUp(request):
-    if not request.user.is_authenticated:
+    
         if request.method == 'POST':
             form = RegistrationForm(request.POST)
             if form.is_valid():
@@ -21,14 +21,24 @@ def signUp(request):
         else :
             form = RegistrationForm()
         return render(request,'signUp.html',{"form":form})
-    else:
-        return redirect('home')
+
 
 def user_login(request):
-    pass
+   pass
+
 
 def profile(request):
-    pass
+    if request.user.is_authenticated:
+        if request.method == 'POST':
+            form = ChangeUserData(request.POST, instance=request.user)
+            if form.is_valid():
+                messages.success(request, 'Account updated successfully')
+                form.save()
+        else:
+            form = ChangeUserData(instance=request.user)
+        return render(request,'profile.html', {'form': form})
+    else:
+        return redirect('signUp')
 
 def LogOut(request):
     logout(request)
