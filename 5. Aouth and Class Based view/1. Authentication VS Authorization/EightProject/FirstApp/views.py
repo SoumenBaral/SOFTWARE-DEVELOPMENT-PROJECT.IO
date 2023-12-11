@@ -25,7 +25,20 @@ def signUp(request):
     #     return redirect('profile')
 
 def user_login(request):
-   pass
+   if request.method == "POST":
+       form = AuthenticationForm(request=request,data=request.POST)
+       if form.is_valid():
+            name = form.cleaned_data['username']
+            password = form.cleaned_data['password']
+            user = authenticate(username=name,password=password)
+            login(request,user)
+            messages.warning(request,"LoggedIn Successfully ")
+            return redirect("home")
+
+
+   else:
+       form = AuthenticationForm()
+       return render(request,"login.html",{'form':form})
 
 
 def profile(request):
