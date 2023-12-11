@@ -9,7 +9,7 @@
   <body>
     <nav class='navbar navbar-light bg-dark'>
         <div class='container-fluid'>
-            <a class="navbar-brand text-white">Navbar</a>
+            <a class="navbar-brand text-white fw-bold fs-4 " href="{% url "home" %}">Auth</a>
             <div class= 'd-flex'>
                 {% if user.is_authenticated %}
                     <a href="{% url "profile" %}" class="btn btn-outline-success mx-4 text-white">Profile</a>
