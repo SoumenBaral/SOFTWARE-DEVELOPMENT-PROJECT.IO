@@ -5,17 +5,6 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login,authenticate,logout
 from django.contrib.auth.decorators import login_required
 from Posts.models import Posts
-
-# def AddAuthor(request):
-#     if request.method == 'POST':
-#         form =forms.AuthorForm(request.POST)
-#         if form.is_valid():
-#             form.save()
-#             return redirect('addAuthor')
-        
-#     else:
-#         form = forms.AuthorForm
-#         return render(request,'Author.html',{"form":form})
     
 
 def Register(request):
@@ -71,3 +60,7 @@ def EditProfile(request):
     else:   
         form = forms.ChangeUserForm(instance = request.user)
     return render(request,'updateUser.html',{'form':form})
+
+
+def changePassWithOldPass(request):
+    pass
