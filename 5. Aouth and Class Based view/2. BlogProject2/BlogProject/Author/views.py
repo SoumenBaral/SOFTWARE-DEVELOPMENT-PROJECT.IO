@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect
 from . import  forms
 from django.contrib import messages
-from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.forms import AuthenticationForm 
 from django.contrib.auth import login,authenticate,logout
 from django.contrib.auth.decorators import login_required
 from Posts.models import Posts
@@ -60,3 +60,6 @@ def profile (request):
     data = Posts.objects.filter(author = request.user)
     return render(request,'profile.html',{'data': data})
 
+def EditProfile(request):
+    form = forms.ChangeUserForm(instance = request.user)
+    return render(request,'updateUser.html',{'form':form})

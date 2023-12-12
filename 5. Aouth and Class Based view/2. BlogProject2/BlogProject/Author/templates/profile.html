@@ -1,7 +1,12 @@
 {% extends "base.html" %}
 
 {% block content %}
-            
+<h3 class='text-center text-primary m-3'>Welcome <span class='text-warning'>{% for i in data %}{{i.author.first_name}} {{i.author.last_name}}{% endfor %}</span></h3>
+<div class='d-flex justify-content-center align-item-center'>
+    <a class="btn  btn-outline-primary" href="{% url 'edit_profile' %}">
+      Edit Your Profile</a
+    >
+  </div>           
 <div style="width: 75%; margin: auto;">
     <div class='d-flex flex-wrap justify-content center align-item-center '>
         {% for i in data  %}
