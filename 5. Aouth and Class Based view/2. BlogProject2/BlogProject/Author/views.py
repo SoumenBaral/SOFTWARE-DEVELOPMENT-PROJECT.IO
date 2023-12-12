@@ -61,5 +61,13 @@ def profile (request):
     return render(request,'profile.html',{'data': data})
 
 def EditProfile(request):
-    form = forms.ChangeUserForm(instance = request.user)
+    if request.method == "POST":
+        form = forms.ChangeUserForm(request.POST,instance = request.user)
+
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Profile Updated Successfully')
+            return redirect('profile')
+    else:   
+        form = forms.ChangeUserForm(instance = request.user)
     return render(request,'updateUser.html',{'form':form})
