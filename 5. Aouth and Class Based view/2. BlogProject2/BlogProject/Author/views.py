@@ -3,7 +3,8 @@ from . import  forms
 from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login,authenticate,logout
-
+from django.contrib.auth.decorators import login_required
+from Posts.models import Posts
 
 # def AddAuthor(request):
 #     if request.method == 'POST':
@@ -53,4 +54,9 @@ def LogIn(request):
 def userLogOut(request):
     logout(request)
     return redirect('login')
+
+@login_required
+def profile (request):
+    data = Posts.objects.filter(author = request.user)
+    return render(request,'profile.html',{'data': data})
 
