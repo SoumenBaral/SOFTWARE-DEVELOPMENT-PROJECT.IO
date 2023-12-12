@@ -2,7 +2,7 @@ from django.shortcuts import render,redirect
 from . import  forms
 from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm
-from django.contrib.auth import login,authenticate
+from django.contrib.auth import login,authenticate,logout
 
 
 # def AddAuthor(request):
@@ -22,7 +22,8 @@ def Register(request):
         form =forms.RegistrationForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('register')
+            messages.success(request, 'register in Successfully')
+            return redirect('login')
     else:
        form = forms.RegistrationForm
     return render(request,'register.html',{"form":form,'type' : 'Register'})
@@ -49,5 +50,7 @@ def LogIn(request):
             
     
 
-
+def userLogOut(request):
+    logout(request)
+    return redirect('login')
 
