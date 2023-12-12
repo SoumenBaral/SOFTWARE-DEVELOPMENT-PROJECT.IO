@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
 {% load crispy_forms_tags %} 
-<h1 class="text-center mt-3" >Add author page</h1>
+<h1 class="text-center mt-3" >{{type}} page</h1>
 <form  style="width:50% ; margin : auto" method="post">
     {% csrf_token %}
     {{form|crispy}}

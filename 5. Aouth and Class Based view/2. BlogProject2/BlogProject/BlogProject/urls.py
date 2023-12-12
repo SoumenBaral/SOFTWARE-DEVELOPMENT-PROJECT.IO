@@ -9,7 +9,6 @@ urlpatterns = [
     path('', views.Home, name="home"),
     path('Posts/',include('Posts.urls')),
     path('author/',include('Author.urls')),
-    path('Profiles/',include('Profiles.urls')),
     path('Categories/',include('Categories.urls')),
     
     
