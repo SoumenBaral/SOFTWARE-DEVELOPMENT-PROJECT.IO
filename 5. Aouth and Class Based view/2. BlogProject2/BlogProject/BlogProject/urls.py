@@ -10,6 +10,7 @@ urlpatterns = [
     path('Posts/',include('Posts.urls')),
     path('author/',include('Author.urls')),
     path('Categories/',include('Categories.urls')),
+    path('category/<slug:category_slug>/', views.Home, name='category_wise_post'),
     
     
 ]

@@ -1,21 +1,34 @@
 {% extends "base.html" %}
+{% load static %}
 {% block content %}
-
-<div class= 'd-flex flex-wrap p-4'>
-    <div class='col-2 bg-while p-4'>
-        <div class="form-check">
-            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-            <label class="form-check-label" for="flexRadioDefault1">
-              Default radio
-            </label>
-          </div>
-        <div class="form-check">
-            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-            <label class="form-check-label" for="flexRadioDefault2">
-              Default checked radio
-            </label>
-        </div>
+<div class='d-flex flex-wrap w-100'>
+    <div class='col-md-5'>
+        <h1 class="text-center mt-5 text-primary" >Welcome to our <span class='text-warning'>Bolg</span></h1>
+        <p style='width: 90%; margin: auto;' class='text-center'>Voluptatibus dolorum delectus necessitatibus temporibus adipisci, harum enim unde, suscipit in ipsum provident hic minima molestias reiciendis nihil veniam aut doloribus, ab quidem sit cum at nemo nulla autem! Dolor quaerat ea voluptatem ullam, consequuntur quisquam ut iste. Vitae exercitationem ipsum blanditiis. Nihil rem in quo magni quam sapiente ad ipsa voluptatum saepe quos temporibus, at iste? Eum saepe eos error ea recusandae, deserunt at quidem odio harum inventore. Necessitatibus eos sapiente architecto optio aut esse, facilis, voluptatibus assumenda ut exercitationem nobis molestias, quisquam nam quia odio ipsa? Voluptatem voluptas distinctio eaque.</p>
     </div>
+    <div class='col-md-7'>
+        <img style='width: 100%;' src="{% static "images/blog.jpg" %}" alt="">
+    </div>
+</div>
+<div class= 'd-flex flex-wrap p-4 mt-3'>
+    <div class="col-2 bg-white p-3" >
+        <h5>All Categories</h5>
+        {% for cat in Categories %}
+        <div class="form-check">
+          <input
+            class="form-check-input"
+            type="radio"
+            name="category"
+            id="{{cat.id}}"
+          />
+          <label class="form-check-label" for="{{cat.id}}">
+            
+            <a href="{% url 'category_wise_post' cat.slug %}" class="text-decoration-none text-dark" >{{cat.Name}}</a>
+          </label>
+        </div>
+        
+        {% endfor %}
+      </div>
     <div class='col-10 '>
        
         <h4 class='text-end text-warning'><span class='text-success'>Post</span> found <span class='badge bg-danger rounded-pill top-0'>{{data | length}}</span></h4>
@@ -44,6 +57,6 @@
 
     </div>
 </div>
-<h1 class="text-center mt-5" >Welcome to our Bolg Project</h1>
+
 
 {% endblock content %}
