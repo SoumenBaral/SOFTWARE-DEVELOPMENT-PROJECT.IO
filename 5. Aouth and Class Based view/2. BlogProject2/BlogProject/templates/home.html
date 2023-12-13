@@ -1,26 +1,49 @@
 {% extends "base.html" %}
 {% block content %}
-<h1 class="text-center mt-5" >Welcome to our Bolg Project</h1>
-<div style="width: 75%; margin: auto;">
-    <div class='d-flex flex-wrap justify-content center align-item-center '>
-        {% for i in data  %}
-            <div class="card col-sm-3 m-3" style="width: 18rem;">
-                <div class="card-body">
-                    <h5 class="card-title">{{i.Name}}</h5>
-                    <h6 class="card-subtitle mb-2 text-body-secondary">Writer: {{i.author.first_name}} {{i.author.last_name}}</h6>
-                    <p class="card-text">{{i.Content}}</p>
-                    <div class ='mb-4'>
-                        <h6>Categories:</h6>
-                        <div class='d-flex flex-wrap' >
-                            {% for cat in i.category.all %} 
-                                <button class="badge bg-primary bg-opasity-75 rounded btn-sm m-1 fw-bold" disabled ><small>{{cat.Name}} </small></button>
-                            {% endfor %}
+
+<div class= 'd-flex flex-wrap p-4'>
+    <div class='col-2 bg-while p-4'>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+            <label class="form-check-label" for="flexRadioDefault1">
+              Default radio
+            </label>
+          </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+            <label class="form-check-label" for="flexRadioDefault2">
+              Default checked radio
+            </label>
+        </div>
+    </div>
+    <div class='col-10 '>
+       
+        <h4 class='text-end text-warning'><span class='text-success'>Post</span> found <span class='badge bg-danger rounded-pill top-0'>{{data | length}}</span></h4>
+        <div style="width: 75%; margin: auto;">
+            <div class='d-flex flex-wrap justify-content center align-item-center '>
+                {% for i in data  %}
+                    <div class="card col-sm-3 m-3" style="width: 18rem;">
+                        <div class="card-body">
+                            <h5 class="card-title">{{i.Name}}</h5>
+                            <h6 class="card-subtitle mb-2 text-body-secondary">Writer: {{i.author.first_name}} {{i.author.last_name}}</h6>
+                            <p class="card-text">{{i.Content}}</p>
+                            <div class ='mb-4'>
+                                <h6>Categories:</h6>
+                                <div class='d-flex flex-wrap' >
+                                    {% for cat in i.category.all %} 
+                                        <button class="badge bg-primary bg-opasity-75 m-1 p-1 fw-bold" disabled ><small>{{cat.Name}} </small></button>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            
                         </div>
                     </div>
-                    
-                </div>
+            {% endfor %}
             </div>
-    {% endfor %}
+        </div>
+
     </div>
 </div>
+<h1 class="text-center mt-5" >Welcome to our Bolg Project</h1>
+
 {% endblock content %}
