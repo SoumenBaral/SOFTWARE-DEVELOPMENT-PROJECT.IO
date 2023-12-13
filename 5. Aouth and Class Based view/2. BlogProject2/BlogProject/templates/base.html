@@ -18,9 +18,9 @@
  
             
              {% if request.user.is_authenticated %}
-             <li class="nav-item">
-              <a class="nav-link" href="{% url "addPost" %}">Posts</a>
-            </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url "addPost" %}">Posts</a>
+              </li>
              {% endif %}
             </ul> 
            <div class="d-flex p-2">

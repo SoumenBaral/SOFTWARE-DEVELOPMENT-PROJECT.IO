@@ -13,12 +13,11 @@
                         <h6>Categories:</h6>
                         <div class='d-flex flex-wrap' >
                             {% for cat in i.category.all %} 
-                                <button class="btn btn-primary btn-opasity-25 rounded btn-sm m-1 fw-bold" disabled ><small>{{cat.Name}} </small></button>
+                                <button class="badge bg-primary bg-opasity-75 rounded btn-sm m-1 fw-bold" disabled ><small>{{cat.Name}} </small></button>
                             {% endfor %}
                         </div>
                     </div>
-                    <a href="{% url "edit" i.id %}" class="btn btn-warning">Edit</a>
-                    <a href="{% url "delete" i.id %}" class="btn btn-danger">Delete</a>
+                    
                 </div>
             </div>
     {% endfor %}

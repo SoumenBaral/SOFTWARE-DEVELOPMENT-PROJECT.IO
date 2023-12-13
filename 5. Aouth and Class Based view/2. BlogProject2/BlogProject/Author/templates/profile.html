@@ -6,8 +6,11 @@
     <a class="btn  btn-outline-primary" href="{% url 'edit_profile' %}">
       Edit Your Profile</a
     >
-  </div>           
+  </div>
+  
+
 <div style="width: 75%; margin: auto;">
+    <h5 class='text-success'>Your Post :</h5>
     <div class='d-flex flex-wrap justify-content center align-item-center '>
         {% for i in data  %}
             <div class="card col-sm-3 m-3" style="width: 18rem;">

@@ -7,6 +7,8 @@ def AddPost(request):
     if request.method == 'POST':
         form = forms.AddPost(request.POST)
         if form.is_valid():
+            # form.cleaned_data['author'] = request.user
+            form.instance.author = request.user
             form.save()
             return redirect('addPost')
     else:

@@ -29,7 +29,7 @@ def LogIn(request):
             if user is not None:
                 messages.success(request, 'Logged in Successfully')
                 login(request, user)
-                return redirect('home')
+                return redirect('profile')
             
             else:
                 messages.warning(request,"No user Found")
@@ -49,6 +49,7 @@ def profile (request):
     data = Posts.objects.filter(author = request.user)
     return render(request,'profile.html',{'data': data})
 
+@login_required
 def EditProfile(request):
     if request.method == "POST":
         form = forms.ChangeUserForm(request.POST,instance = request.user)
@@ -61,7 +62,7 @@ def EditProfile(request):
         form = forms.ChangeUserForm(instance = request.user)
     return render(request,'updateUser.html',{'form':form})
 
-
+@login_required
 def changePassWithOldPass(request):
     if request.method == "POST":
         form = PasswordChangeForm(request.user , data=request.POST)
