@@ -1,8 +1,8 @@
 from django.shortcuts import render,redirect
 from . import  forms
 from django.contrib import messages
-from django.contrib.auth.forms import AuthenticationForm 
-from django.contrib.auth import login,authenticate,logout
+from django.contrib.auth.forms import AuthenticationForm ,PasswordChangeForm
+from django.contrib.auth import login,authenticate,logout,update_session_auth_hash
 from django.contrib.auth.decorators import login_required
 from Posts.models import Posts
     
@@ -63,4 +63,14 @@ def EditProfile(request):
 
 
 def changePassWithOldPass(request):
-    pass
+    if request.method == "POST":
+        form = PasswordChangeForm(request.user , data=request.POST)
+
+        if form.is_valid():
+            form.save()
+            update_session_auth_hash(request,form.user)
+            messages.success(request, 'Successfully changed your Password')
+            return redirect('profile')
+    else:   
+        form = PasswordChangeForm(user=request.user)
+    return render(request,'passwordChange.html',{'form':form})
