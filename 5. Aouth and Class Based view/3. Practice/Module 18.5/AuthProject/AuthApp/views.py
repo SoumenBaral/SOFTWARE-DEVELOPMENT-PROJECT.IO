@@ -1,8 +1,8 @@
 from django.shortcuts import render,redirect
 from .forms import registerForm ,ChangeUserData
-from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.forms import AuthenticationForm,PasswordChangeForm ,SetPasswordForm
 from django.contrib import messages
-from django.contrib.auth import login,authenticate,logout
+from django.contrib.auth import login,authenticate,logout,update_session_auth_hash
 from django.contrib.auth.decorators import login_required
 # Create your views here.
 
@@ -42,13 +42,56 @@ def logIn(request):
 def Profile(request):
     return render(request,'profile.html')
 
+
+
 def updateUser(request):
-    pass
+    if request.user.is_authenticated:
+        if request.method == 'POST':
+            form = ChangeUserData(request.POST, instance=request.user)
+            if form.is_valid():
+                messages.success(request, 'Account updated successfully')
+                form.save()
+                messages.success(request,"Update Profile  Successfully")
+                return redirect("profile")
+        else:
+            form = ChangeUserData(instance=request.user)
+            return render(request,'update.html',{'form':form})
+    else:
+        return redirect('register')
+
+def LogOut(request):
+    logout(request)
+    return redirect('signUp')
 
 def changePassWithOld(request):
-    pass
+    if request.user.is_authenticated:
+        if request.method == 'POST':
+            form = PasswordChangeForm(user=request.user, data=request.POST)
+            if form.is_valid():
+                form.save()
+                messages.success(request," PassWord Change With old Password  Successfully Changed")
+                update_session_auth_hash(request, form.user)
+                return redirect('profile')
+        else:
+            form = PasswordChangeForm(user=request.user)
+        return render(request, 'passChange.html', {'form': form})
+    else:
+        return redirect('login')
 def changePassWithOutOldPass(request):
-    pass
+    if request.user.is_authenticated:
+        if request.method == 'POST':
+            form = SetPasswordForm(user=request.user, data=request.POST)
+            if form.is_valid():
+                form.save()
+                messages.success(request," Change PassWord  Without  old Password  Successfully Changed")
+                update_session_auth_hash(request, form.user)
+                return redirect('profile')
+        else:
+            form = SetPasswordForm(user=request.user)
+        return render(request, 'passChange.html', {'form': form})
+    else:
+        return redirect('login')
+
 def Logout(request):
     logout(request)
     messages.warning(request,"Logged Out Successfully")

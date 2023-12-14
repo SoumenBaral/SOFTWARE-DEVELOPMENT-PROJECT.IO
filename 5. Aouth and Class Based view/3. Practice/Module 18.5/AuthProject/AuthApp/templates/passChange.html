@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+    <form method = 'POST' style="width: 50%; margin: auto;">
+        <h1 class='text-center'>Register Page</h1>
+        {% csrf_token %}
+        <!-- {{form | crispy }} -->
+        {% for fm in form%} 
+            {{fm.label_tag}} 
+            {{fm}} 
+            {% if fm.errors %}
+            <p class="text-warning fw-bold">{{fm.errors|striptags}}</p>
+            {% endif %}
+        {% endfor %}
+        <br />
+        <button class="btn btn-primary" type="submit">Submit</button>
+        <br/>
+    </form>
+    </form>
+
+{% endblock content %}
+
