@@ -1,27 +1,23 @@
 {% extends "base.html" %}
 {% load crispy_forms_tags %}
 {% block content %}
-<h3 class='text-center text-primary'>welcome <span class="text-warning"> {{user.first_name}}</span> </h3>
+<h3 class='text-center text-primary'>welcome <span class="text-warning"> {{user.first_name}}</span> <span class='text-secondary'>{{user.last_name}}</span> </h3>
 <div style = 'width:50%; margin:auto'>
-    <a href="" class="btn btn-outline-primary m-1">Edit Profile</a>
-    <a href="" class="btn btn-outline-success m-1">ChangePassWord with Old Pass</a>
-    <a href="" class="btn btn-outline-danger m-1">Change PassWord</a>
+    <a href="{% url "update" %}" class="btn btn-outline-primary m-1">Edit Profile</a>
+    <a href="{% url "withOld" %}" class="btn btn-outline-success m-1">ChangePassWord with Old Pass</a>
+    <a href="{% url "WithoutOld" %}" class="btn btn-outline-danger m-1">Change PassWord</a>
+    <div class = 'my-4'>
+        
+      <h3>UserName : {{user.username}}</h3>
+      <h4>Name :  {{user.first_name}}</span> <span class='text-secondary'>{{user.last_name}}</span>  </h4>
+      <h5>Email: {{user.email}}</h5>
+      <h6>Be happy with what you have</h6>
+
+
+
+    </div>
 
 </div>
-<form method="post" style="width: 50%; margin: auto" novalidate>
-    {% csrf_token %}
-    {% if form.non_field_errors %}
-    {% for er in form.non_field_errors %}
-      <p class="bg-danger text-white p-3">{{er}}</p>
-    {% endfor %}
-    {% endif %}
-    <!-- {{form | crispy }} -->
-    {% for fm in form%} 
-      {{fm.label_tag}} 
-      {{fm}} 
-      {{fm.errors|striptags}} 
-    {% endfor %}
-    <br />
-    <button class="btn btn-warning" type="submit">Change Data</button>
-  </form>
+
 {% endblock content %}
+

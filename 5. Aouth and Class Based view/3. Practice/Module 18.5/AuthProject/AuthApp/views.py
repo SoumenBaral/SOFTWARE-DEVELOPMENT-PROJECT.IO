@@ -3,6 +3,7 @@ from .forms import registerForm ,ChangeUserData
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib import messages
 from django.contrib.auth import login,authenticate,logout
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 def Home(request):
@@ -36,11 +37,18 @@ def logIn(request):
     else:
         form = AuthenticationForm()
     return render(request,'login.html',{"form":form})
-    
-def Profile(request):
-    form = ChangeUserData(instance=request.user)
-    return render(request,'profile.html',{'form':form})
 
+@login_required   
+def Profile(request):
+    return render(request,'profile.html')
+
+def updateUser(request):
+    pass
+
+def changePassWithOld(request):
+    pass
+def changePassWithOutOldPass(request):
+    pass
 def Logout(request):
     logout(request)
     messages.warning(request,"Logged Out Successfully")

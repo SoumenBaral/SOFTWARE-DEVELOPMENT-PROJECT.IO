@@ -8,5 +8,9 @@ urlpatterns = [
     path('login/',views.logIn,name='login'),
     path('profile/',views.Profile,name='profile'),
     path('logout/',views.Logout,name='logout'),
-    path('profile/',views.Profile,name='profile')
+    path('profile/',views.Profile,name='profile'),
+    path('update/',views.updateUser,name='update'),
+    path('withOld/',views.changePassWithOld,name='withOld'),
+    path('WithoutOld',views.changePassWithOutOldPass,name='WithoutOld')
+    
 ]
