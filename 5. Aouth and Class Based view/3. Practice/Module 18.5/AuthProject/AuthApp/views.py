@@ -43,7 +43,7 @@ def Profile(request):
     return render(request,'profile.html')
 
 
-
+@login_required  
 def updateUser(request):
     if request.user.is_authenticated:
         if request.method == 'POST':
@@ -59,10 +59,8 @@ def updateUser(request):
     else:
         return redirect('register')
 
-def LogOut(request):
-    logout(request)
-    return redirect('signUp')
 
+@login_required  
 def changePassWithOld(request):
     if request.user.is_authenticated:
         if request.method == 'POST':
@@ -77,6 +75,8 @@ def changePassWithOld(request):
         return render(request, 'passChange.html', {'form': form})
     else:
         return redirect('login')
+    
+@login_required  
 def changePassWithOutOldPass(request):
     if request.user.is_authenticated:
         if request.method == 'POST':
