@@ -1,13 +1,7 @@
 {% extends "base.html" %}
 {% load crispy_forms_tags %}
 {% block content %}
-    {% if messages %}
-        {% for m in messages  %}
-        
-        <h5 {% if m.tags %} class="bg-{{m.tags}} text-white fw-bold text-center" {% endif %} >{{m}}</h5>
-        
-        {% endfor %}
-    {% endif %}
+    
     <form method="post" style="width: 50%; margin: auto" novalidate>
         <h1 class='text-center'>logIn Page</h1>
         {% csrf_token %}

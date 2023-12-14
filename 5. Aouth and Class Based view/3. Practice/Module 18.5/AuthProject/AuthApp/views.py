@@ -1,19 +1,49 @@
-from django.shortcuts import render
-from .forms import registerForm 
+from django.shortcuts import render,redirect
+from .forms import registerForm ,ChangeUserData
 from django.contrib.auth.forms import AuthenticationForm
-
+from django.contrib import messages
+from django.contrib.auth import login,authenticate,logout
 # Create your views here.
 
 def Home(request):
     return render(request,'home.html')
 
 def registered(request):
+    if request.method == 'POST':
+        form = registerForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request,"Account created Successfully")
+            print(form.cleaned_data)
+            return  redirect("login")
 
-    form = registerForm()
+    else:
+        form = registerForm()
     return render(request,'registration.html',{"form":form})
 
 def logIn(request):
-    form = AuthenticationForm()
+    if request.method == 'POST':
+        form = AuthenticationForm(request=request,data = request.POST)
+        if form.is_valid():
+            name = form.cleaned_data['username']
+            password = form.cleaned_data['password']
+            user = authenticate(username=name,password=password)
+            login(request,user)
+            messages.success(request,"Logged In Successfully")
+            print(form.cleaned_data)
+            return  redirect("home")
+
+    else:
+        form = AuthenticationForm()
     return render(request,'login.html',{"form":form})
+    
+def Profile(request):
+    form = ChangeUserData(instance=request.user)
+    return render(request,'profile.html',{'form':form})
+
+def Logout(request):
+    logout(request)
+    messages.warning(request,"Logged Out Successfully")
+    return redirect('login')
 
     
