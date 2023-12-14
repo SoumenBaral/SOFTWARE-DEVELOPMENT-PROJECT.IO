@@ -1,6 +1,13 @@
 {% extends "base.html" %}
 {% load crispy_forms_tags %}
 {% block content %}
+<h3 class='text-center text-primary'>welcome <span class="text-warning"> {{user.first_name}}</span> </h3>
+<div style = 'width:50%; margin:auto'>
+    <a href="" class="btn btn-outline-primary m-1">Edit Profile</a>
+    <a href="" class="btn btn-outline-success m-1">ChangePassWord with Old Pass</a>
+    <a href="" class="btn btn-outline-danger m-1">Change PassWord</a>
+
+</div>
 <form method="post" style="width: 50%; margin: auto" novalidate>
     {% csrf_token %}
     {% if form.non_field_errors %}
