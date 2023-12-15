@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+
+<div class="card-body">
+    <img src="{{object.image.url}}" class="card-img-top" style='width: 100%;' alt="...">
+    <h5 class="card-title">{{object.Name}}</h5>
+    <h6 class="card-subtitle mb-2 text-body-secondary">Writer: jani na {{object.author.first_name}} {{object.author.last_name}}</h6>
+    <p class="card-text">{{object.Content|truncatewords:10}}</p>
+    <div class='mb-4'>
+        <h6>Categories:</h6>
+        <div class='d-flex flex-wrap'>
+            {% for cat in object.category.all %} 
+                <button class="badge bg-primary bg-opacity-75 m-1 p-1 fw-bold" disabled><small>{{cat.Name}}</small></button>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+</div>
+
+<div class="card m-2">
+    <h5 class="p-3">Total Comments : {{comments | length}}</h5>
+    {% for comment in comments %}
+  <div class="card-body border m-2">
+        <p><b>{{comment.name}}</b> {{comment.created_on}}</p>
+        <p>{{comment.body}}</p>
+    </div>
+    {% endfor %}
+</div>
+<div class="card m-2">
+    <div class="card-body">
+        <form method="post">
+            <h1>Add Comment</h1>
+            {% csrf_token %}
+            {{comment_form | crispy}}
+
+            <button class="btn btn-warning">Submit</button>
+    </div>
+</div>
+{% endblock content %}
+
+
+
+
