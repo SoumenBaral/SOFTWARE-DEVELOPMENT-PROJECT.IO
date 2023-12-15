@@ -16,8 +16,8 @@
         {% for i in data  %}
             <div class="card col-sm-3 m-3" style="width: 18rem;">
                 <div class="card-body">
-                    <img src="{{i.image.url}}" class="card-img-top" alt="...">
-                    <h5 class="card-title">{{i.Name}}</h5>
+                    <img src="{{i.image.url}}" class="card-img-top" style='width: 100%;' alt="...">
+                    <h5 class="card-title"><a href="{% url "details_view" i.id%}" class='text-decoration-none text-dark'>{{i.Name}}</a></h5>
                     <h6 class="card-subtitle mb-2 text-body-secondary">Writer: {{i.author.first_name}} {{i.author.last_name}}</h6>
                     <p class="card-text">{{i.Content|truncatewords:10}}</p>
                     <div class ='mb-4'>

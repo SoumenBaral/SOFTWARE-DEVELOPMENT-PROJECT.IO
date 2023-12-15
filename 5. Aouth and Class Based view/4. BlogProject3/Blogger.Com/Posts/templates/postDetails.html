@@ -4,20 +4,23 @@
 
 {% block content %}
 
-<div class="card-body">
-    <img src="{{object.image.url}}" class="card-img-top" style='width: 100%;' alt="...">
-    <h5 class="card-title">{{object.Name}}</h5>
-    <h6 class="card-subtitle mb-2 text-body-secondary">Writer: jani na {{object.author.first_name}} {{object.author.last_name}}</h6>
-    <p class="card-text">{{object.Content|truncatewords:10}}</p>
-    <div class='mb-4'>
-        <h6>Categories:</h6>
-        <div class='d-flex flex-wrap'>
-            {% for cat in object.category.all %} 
-                <button class="badge bg-primary bg-opacity-75 m-1 p-1 fw-bold" disabled><small>{{cat.Name}}</small></button>
-            {% endfor %}
+<div class='d-md-flex  justify-content-center align-items-center'>
+   <div class='col-md-8 d-md-flex  justify-content-center'>
+    <img src="{{object.image.url}}" class="card-img-top" style='width: 75%;' alt="...">
+   </div>
+   <div class='m-4 col-md-4'>
+        <h5 class="card-title" >{{object.Name}}</h5>
+        <h6 class="card-subtitle mb-2 text-body-secondary">Writer: {{object.author.first_name}} {{object.author.last_name}}</h6>
+        <p class="card-text">{{object.Content}}</p>
+        <div class='mb-4'>
+            <h6>Categories:</h6>
+            <div class='d-flex flex-wrap'>
+                {% for cat in object.category.all %} 
+                    <button class="badge bg-warning m-1 p-2 text-dark fw-sm" disabled><small>{{cat.Name}}</small></button>
+                {% endfor %}
+            </div>
         </div>
     </div>
-</div>
 </div>
 
 <div class="card m-2">
