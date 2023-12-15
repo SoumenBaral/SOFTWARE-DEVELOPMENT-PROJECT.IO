@@ -26,12 +26,13 @@ class AddPostCreateView(CreateView):
     model = models.Posts
     form_class = forms.AddPost
     template_name = "Posts.html"
-    success_url = '/author/profile/'
+    success_url = reverse_lazy('profile')
     def form_valid(self, form):
         form.instance.author = self.request.user
         return super().form_valid(form)
     
-    
+
+           
 def EditPost(request,id):
     post = models.Posts.objects.get(pk=id)
     print(post.Name)
