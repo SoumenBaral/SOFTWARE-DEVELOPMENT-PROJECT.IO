@@ -5,8 +5,8 @@ from datetime import date
 class Album(models.Model):
     AlbumName = models.CharField(max_length=100)
     Musician = models.ForeignKey(Musician,on_delete=models.CASCADE)
-    releaseDate = models.DateTimeField(("Date"), default=date.today)
-    Rating = models.OneToOneField('Ratings', on_delete=models.CASCADE)
+    releaseDate = models.DateTimeField(auto_now_add=True)
+    Rating = models.ForeignKey('Ratings', on_delete=models.CASCADE)
     def __str__ (self) -> str:
         return self.AlbumName
 

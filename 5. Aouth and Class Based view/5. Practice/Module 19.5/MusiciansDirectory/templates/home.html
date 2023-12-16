@@ -18,7 +18,7 @@
      {% for i in data  %}
      <tr>
         <th scope="row">{{i.id}}</th>
-        <td>{{i.Musician.FirstName}}  {{i.Musician.LastName}}</td>
+        <td><a href="{% url "editM" i.id %}" class='text-decoration-none text-dark'>{{i.Musician.FirstName}}  {{i.Musician.LastName}}</a></td>
         <td>{{i.Rating.rating}}</td>
         <td>
         {% for j in i.Musician.Instruments.all %}

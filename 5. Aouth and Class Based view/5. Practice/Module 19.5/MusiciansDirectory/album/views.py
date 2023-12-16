@@ -8,37 +8,42 @@ from django.contrib.auth.forms import AuthenticationForm ,PasswordChangeForm
 from django.http import HttpResponse
 from django.contrib.auth import authenticate, login , update_session_auth_hash, logout
 from django.contrib.auth.decorators import login_required
-from django.views.generic import CreateView
+from django.views.generic import CreateView,UpdateView,DeleteView
+    
+class AddAlbum(CreateView):
+    model = models.Album
+    form_class = forms.AddAlbums
+    template_name = 'album.html'
+    def get_success_url(self):
+        return reverse_lazy('home')
+    
+    def form_valid(self, form):
+        messages.success(self.request, 'Successfully Added a Album')
+        return super().form_valid(form)
+    def form_invalid(self, form):
+        response = super().form_invalid(form)
+        messages.warning(self.request,"can't not create This Album")
+        return response
+    
 
-def AddAlbum(request):
-    if request.method == 'POST':
-        form = forms.AddAlbums(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('addAlbum')
-    else:   
-        form = forms.AddAlbums 
-        return render(request,'album.html',{"form":form})
+class EditPostView(UpdateView):
+    model = models.Album
+    form_class = forms.AddAlbums
+    template_name = 'album.html'
+    pk_url_kwarg = 'id'
+    def get_success_url(self):
+        messages.success(self.request,'Update done ')
+        return reverse_lazy('home')
     
 
 
-def EditAlbum(request,id):
-    post = models.Album.objects.get(pk=id)
-   
-    if request.method == 'POST':
-        form = forms.AddAlbums(request.POST ,instance=post)
-        if form.is_valid():
-            form.save()
-            return redirect('home')
-    else:
-        form = forms.AddAlbums(instance=post)
-        return  render(request,'album.html',{"form":form})
-    
-def DeletePost(request,id):
-    post = models.Album.objects.get(pk=id)
-    post.delete()
-    return redirect('home')
-
+class DeletePostView(DeleteView):
+    model = models.Album
+    template_name = 'delete.html'
+    pk_url_kwarg = 'id'
+    def get_success_url(self):
+        messages.success(self.request,'Delete done ')
+        return reverse_lazy('home')
 
 class RegistrationForms(CreateView):
     template_name = 'registration.html'
