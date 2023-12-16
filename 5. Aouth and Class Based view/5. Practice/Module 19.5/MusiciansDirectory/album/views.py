@@ -19,6 +19,8 @@ def AddAlbum(request):
     else:   
         form = forms.AddAlbums 
         return render(request,'album.html',{"form":form})
+    
+
 
 def EditAlbum(request,id):
     post = models.Album.objects.get(pk=id)
@@ -41,22 +43,47 @@ def DeletePost(request,id):
 class RegistrationForms(CreateView):
     template_name = 'registration.html'
     form_class = forms.RegistrationForm
-    success_url = reverse_lazy('home')
+    success_url = reverse_lazy('login')
+
+    def form_valid(self, form):
+        messages.success(self.request, 'Successfully Create an Account Now LogIN ')
+        return super().form_valid(form)
+    def form_invalid(self, form):
+        response = super().form_invalid(form)
+        messages.warning(self.request, 'SignUp in information incorrect')
+        return response
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['type'] = 'Register'
+        return context
+    
+    
+    
 
 
-# class UserLoginView(LoginView):
-#     template_name ='registration.html'
-#     def get_success_url(self):
-#         return reverse_lazy('profile')
+class UserLoginView(LoginView):
+    template_name ='registration.html'
+
+    def get_success_url(self):
+        return reverse_lazy('home')
     
-#     def form_valid(self, form):
-#         messages.success(self.request, 'Logged in Successfully')
-#         return super().form_valid(form)
+    def form_valid(self, form):
+        messages.success(self.request, 'Logged in Successfully')
+        return super().form_valid(form)
     
     
-#     def form_invalid(self, form: AuthenticationForm) -> HttpResponse:
-#         messages.success(self.request, 'Logged in information incorrect')
-#         return super().form_invalid(form)
-#     def get_context_data(self, **kwargs):
-#         context = super().get_context_data(**kwargs)
-#         return context
+    def form_invalid(self, form: AuthenticationForm) -> HttpResponse:
+        messages.warning(self.request, 'Logged in information incorrect')
+        return super().form_invalid(form)
+        
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['type'] = 'Login'
+        return context
+    
+
+def logOut(request):
+    logout(request)
+    messages.success(request,'done')
+    return redirect('home')
