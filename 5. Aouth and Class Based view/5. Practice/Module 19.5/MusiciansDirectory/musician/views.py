@@ -25,7 +25,7 @@ class EditMusicianView(UpdateView):
     model = models.Musician
     form_class = forms.AddMusician
     template_name = 'musician.html'
-    pk_url_kwarg='id'
+    pk_url_kwarg = 'id'
     def get_success_url(self):
         messages.success(self.request,'Update done ')
         return reverse_lazy('home')

@@ -9,7 +9,10 @@ from django.http import HttpResponse
 from django.contrib.auth import authenticate, login , update_session_auth_hash, logout
 from django.contrib.auth.decorators import login_required
 from django.views.generic import CreateView,UpdateView,DeleteView
-    
+from django.utils.decorators import method_decorator
+
+
+@method_decorator(login_required, name= 'dispatch')    
 class AddAlbum(CreateView):
     model = models.Album
     form_class = forms.AddAlbums
@@ -26,6 +29,8 @@ class AddAlbum(CreateView):
         return response
     
 
+    
+@method_decorator(login_required, name= 'dispatch')
 class EditPostView(UpdateView):
     model = models.Album
     form_class = forms.AddAlbums
@@ -36,7 +41,7 @@ class EditPostView(UpdateView):
         return reverse_lazy('home')
     
 
-
+@method_decorator(login_required, name= 'dispatch')
 class DeletePostView(DeleteView):
     model = models.Album
     template_name = 'delete.html'
@@ -88,7 +93,14 @@ class UserLoginView(LoginView):
         return context
     
 
-def logOut(request):
-    logout(request)
-    messages.success(request,'done')
-    return redirect('home')
+@method_decorator(login_required, name= 'dispatch')
+class UserLogoutViewClass(LogoutView):
+    template_name = 'logout.html'
+    def get_success_url(self):
+       return reverse_lazy('home')
+    
+    def dispatch(self, request, *args, **kwargs):
+        response = super().dispatch(request, *args, **kwargs)
+
+        messages.success(self.request, "You have been successfully logged out.")
+        return response
