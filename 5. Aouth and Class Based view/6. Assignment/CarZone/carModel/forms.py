@@ -4,7 +4,6 @@ from . import models
 class AddCarForm(forms.ModelForm):
     class Meta:
         model = models.AddCar
-        # exclude = ['author']
         fields = '__all__'
 
 class CommentForm(forms.ModelForm):

@@ -1,6 +1,5 @@
 from django.db import models
 from carsBrand.models import Brand
-from django.contrib.auth.models import User
 
 
 class AddCar(models.Model):
@@ -9,7 +8,6 @@ class AddCar(models.Model):
     quantity = models.IntegerField(default=0)
     Content = models.TextField()
     brand = models.ForeignKey(Brand,on_delete=models.CASCADE)
-    author = models.ForeignKey(User,on_delete=models.CASCADE,)
     image = models.ImageField(upload_to='carModel/media/uploads/', blank = True, null = True)
 
     def __str__ (self):

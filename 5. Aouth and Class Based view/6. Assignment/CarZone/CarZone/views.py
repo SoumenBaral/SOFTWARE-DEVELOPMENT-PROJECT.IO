@@ -1,6 +1,11 @@
 from django.shortcuts import render
-from django.views.generic import TemplateView
+from carModel.models import AddCar,Brand
 
-
-class Home(TemplateView):
-    template_name = 'Home.html'
+def Home(request,brand_slug = None):
+    data = AddCar.objects.all()
+    if brand_slug is not None: 
+        brand = Brand.objects.get(slug = brand_slug) 
+        data = AddCar.objects.filter(brand  = brand)
+    
+    Brands = Brand.objects.all()
+    return render(request,'Home.html',{"data":data,"Brands":Brands})
