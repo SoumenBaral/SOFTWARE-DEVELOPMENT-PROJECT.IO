@@ -1,5 +1,6 @@
 from django.db import models
 from carsBrand.models import Brand
+from django.contrib.auth.models import User
 
 
 class AddCar(models.Model):
@@ -22,3 +23,11 @@ class Comment(models.Model):
     
     def __str__(self):
         return f"Comments by {self.name}"
+
+class BuyCar(models.Model):
+    user = models.ForeignKey(User,on_delete=models.CASCADE)
+    date = models.DateTimeField(auto_now_add=True)
+    car = models.ForeignKey(AddCar,on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f"buy this car name: {self.car.Name}"
