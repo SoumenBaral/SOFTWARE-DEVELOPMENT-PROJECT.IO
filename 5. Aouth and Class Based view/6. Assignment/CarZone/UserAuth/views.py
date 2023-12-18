@@ -2,12 +2,13 @@ from django.shortcuts import render
 from . import forms
 from django.urls import reverse_lazy
 from django.contrib import messages
-from django.views.generic import CreateView,UpdateView,DeleteView
+from django.views.generic import CreateView,UpdateView,DeleteView,View
 from django.contrib.auth.forms import AuthenticationForm ,PasswordChangeForm
 from django.http import HttpResponse
 from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.auth.decorators import login_required 
 from django.utils.decorators import method_decorator
+from carModel.models import BuyCar
 # Create your views here.
 
 class RegistrationForms(CreateView):
@@ -47,10 +48,15 @@ class UserLoginView(LoginView):
         context = super().get_context_data(**kwargs)
         context['type'] = 'Login'
         return context
-@login_required
-def profile (request):
-    # data = Posts.objects.filter(author = request.user)
-    return render(request,'profile.html')
+    
+
+@method_decorator(login_required, name= 'dispatch')
+
+class ProfileView(View):
+    template_name = 'profile.html'
+    def get(self, request, *agrs, **kwargs):
+        data = BuyCar.objects.filter(user=request.user)
+        return render(request, 'profile.html',{'data':data})
 
 @method_decorator(login_required, name= 'dispatch')
 class logOut(LogoutView):

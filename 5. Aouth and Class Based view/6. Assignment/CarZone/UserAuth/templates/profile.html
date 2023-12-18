@@ -11,4 +11,25 @@
   </div>
 </div>
 
+
+<h4 class='text-center text-warning p-4'><span class='text-success'>Total</span> Purchead <span class='badge bg-danger rounded-pill top-0'>{{data | length}}</span></h4>
+     
+               
+<div style="width: 75%; margin: auto;" class='shadow-sm'>
+          <div class="row gap-4 m-4">
+               {% for val in data %}
+               <div class="card col-3 shadow border border-start-0  border-warning" style="width: 18rem;">
+                    <img src="{{val.car.image.url}}" class="card-img-top p-1" alt="image of the Car">
+                    <div class="card-body text-center d-flex flex-column justify-content-center">
+                         <h5 class="card-title">{{val.car.Name}}</h5>
+                         <h6 class="card-title text-secondary">{{val.car.price}}$</h6>
+                         <h6 class="card-title">{{val.car.brand.Name}}</h6>
+                         
+                         <a href=" {% url "details_view" val.id %}" class="btn btn-dark">View Details</a>
+                    </div>
+               </div>
+               {% endfor %}
+          </div>
+</div>
+
 {% endblock content %}
