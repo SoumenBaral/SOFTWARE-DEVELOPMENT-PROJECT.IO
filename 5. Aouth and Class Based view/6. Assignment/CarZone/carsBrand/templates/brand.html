@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class='p-5'>
+
+    <h1 class="text-center " >Add Brand</h1>
+    <form  style="width:50% ; margin : auto" method="post">
+        {% csrf_token %}
+        {{Form|crispy}}
+        <button class="btn btn-warning">Add</button>
+    </form>
+
+</div>
+
+{% endblock content %}
+
+
