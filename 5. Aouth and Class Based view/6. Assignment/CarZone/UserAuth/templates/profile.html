@@ -3,16 +3,17 @@
 {% block content %}
 <div class='p-5'>
     <h3 class='text-center text-primary p-3'>Welcome <span class='text-warning'>{{user.first_name}} {{user.last_name}}</span></h3>
+    <p class='text-center'>Email : {{user.email}}</p>
 
     <div class='d-flex justify-content-center align-item-center' >
-        <a class="btn  btn-outline-primary" href="">
+        <a class="btn  btn-outline-primary" href="{% url "update" %}">
         Edit Your Profile</a
         >
   </div>
 </div>
 
 
-<h4 class='text-center text-warning p-4'><span class='text-success'>Total</span> Purchead <span class='badge bg-danger rounded-pill top-0'>{{data | length}}</span></h4>
+<h4 class='text-center text-warning p-4'><span class='text-success'>Total</span> purchase <span class='badge bg-danger rounded-pill top-0'>{{data | length}}</span></h4>
      
                
 <div style="width: 75%; margin: auto;" class='shadow-sm'>

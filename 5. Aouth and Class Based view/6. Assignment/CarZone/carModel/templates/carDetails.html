@@ -3,25 +3,28 @@
 {% load crispy_forms_tags %}
 {% block content %}
 
-<div class='d-md-flex  justify-content-center align-items-center'>
-   <div class='col-md-8 d-md-flex  justify-content-center'>
-    <img src="{{object.image.url}}" class="card-img-top" style='width: 75%;' alt="...">
+<div class='d-md-flex  justify-content-center align-items-center bg-dark p-4'>
+   <div class='col-md-8 d-md-flex  justify-content-center '>
+       <img src="{{object.image.url}}" class="card-img-top" style='width: 80%;' alt="...">
    </div>
-   <div class='m-4 col-md-4'>
-    <div class="col-4 d-flex flex-column justify-content-center algin-items-center text-center lh-base position-absolute" style="left: 800px; top:30px">
-        <h2 class = "text-primary mb-3">Car Details</h2>
-        <h3 class=""><span class="text-secondary">Name:</span>  {{object.Name}}</h3>
-        <h3 class=""><span class="text-secondary">Price: </span>{{object.price}}$</h3>
-        <h3 class=""><span class="text-secondary">Quntity: </span>{{object.quantity}}</h3>
-        <h3 class=""><span class="text-secondary">Brand Name: </span>{{object.brand.Name}}</h3>
-        {% if request.user.is_authenticated %}
-            <form method="post">
-                {% csrf_token %}
-                <input type="submit" name="buy_car" value="Buy Now" class="btn btn-primary w-50 m-5 mt-3">
-            </form>
-        {% endif %}
+   
+    <div class="col-md-4 text-light">
+            <h2 class = "text-primary text-center mb-3">Car Details</h2>
+            <p class=""><span class="text-secondary">Name:</span>  {{object.Name}}</p>
+            <p class=""><span class="text-secondary">Price: </span>{{object.price}}$</p>
+            <p class=""><span class="text-secondary">Quntity: </span>{{object.quantity}}</p>
+            <p class='text-secondary'>Discription:</p>
+            <p class='mx-4'>{{object.Content}}</p>
+            <h5 class=""><span class="text-secondary">Brand Name: </span>{{object.brand.Name}}</h3>
+            
+                {% if request.user.is_authenticated %}
+                <form method="post">
+                    {% csrf_token %}
+                    <input type="submit" name="buy_car" value="Buy Now" class="btn btn-primary w-50 m-5 mt-3">
+                </form>
+            {% endif %}
     </div>
-    </div>
+  
 </div>
 
 <div class="card m-2">
