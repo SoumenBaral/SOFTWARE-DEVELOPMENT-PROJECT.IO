@@ -32,7 +32,7 @@ def logIn(request):
             login(request,user)
             messages.success(request,"Logged In Successfully")
             print(form.cleaned_data)
-            return  redirect("home")
+            return  redirect("profile")
 
     else:
         form = AuthenticationForm()
