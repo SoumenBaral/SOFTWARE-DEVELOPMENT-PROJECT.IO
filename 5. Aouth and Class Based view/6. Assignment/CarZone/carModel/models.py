@@ -5,9 +5,11 @@ from django.contrib.auth.models import User
 
 class AddCar(models.Model):
     Name  = models.CharField(max_length=100)
+    price = models.DecimalField(max_digits=10, decimal_places=0 , default=0.00)
+    quantity = models.IntegerField(default=0)
     Content = models.TextField()
-    category = models.ForeignKey(Brand,on_delete=models.CASCADE)
-    author = models.ForeignKey(User,on_delete=models.CASCADE)
+    brand = models.ForeignKey(Brand,on_delete=models.CASCADE)
+    author = models.ForeignKey(User,on_delete=models.CASCADE,)
     image = models.ImageField(upload_to='carModel/media/uploads/', blank = True, null = True)
 
     def __str__ (self):

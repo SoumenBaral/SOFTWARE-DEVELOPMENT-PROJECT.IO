@@ -21,7 +21,7 @@
             
              {% if request.user.is_authenticated %}
               <li class="nav-item">
-                <a class="nav-link  fw-bold text-white" href=""> Add Car</a>
+                <a class="nav-link  fw-bold text-white" href="{% url "addCar" %}"> Add Car</a>
                 
               </li>
               <li class="nav-item">
